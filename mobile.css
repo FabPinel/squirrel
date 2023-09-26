@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+
+/* Styles for the topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Couleur de fond de la topbar */
+  padding: 10px;
+}
+
+.profile-icon {
+  padding: 5px;
+  color: #7F5539;
+}
+
+.profile-icon-color {
+    color: blue;
+  }
+  
+.logo img {
+  max-width: 100px; /* Ajustez la largeur maximale du logo selon vos besoins */
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Styles for the tabbar/navbar */
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #7F5539; /* Couleur de fond de la navbar */
+}
+
+.tabbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tabbar li {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0; /* Espace intérieur pour chaque élément */
+  cursor: pointer;
+}
+
+.tabbar li.active {
+  background-color: #E6CCB2; /* Couleur de fond pour l'élément actif */
+}
+
+.material-icons-outlined {
+  font-size: 24px;
+  color: white;
+}
+
