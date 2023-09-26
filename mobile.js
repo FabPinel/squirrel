@@ -17,11 +17,6 @@ uls.forEach((ul) => {
         return;
       }
 
-      ul.parentNode.setAttribute(
-        "class",
-        `${resetClass} ${target.getAttribute("data-where")}-style`
-      );
-
       lis.forEach((item) => clearClass(item, "active"));
 
       setClass(target, "active");
