@@ -17,10 +17,15 @@
         <h1 class="accueil">Accueil</h1>
         <div class='toggle'>
             <div class='tabs'>
-                <div class='tab active'>Pour vous</div>
-                <div class='tab'>Abonnements</div>
+                <div class='tab active'>
+                    Pour vous
+                </div>
+                <div class='tab'>
+                    Abonnements
+                </div>
 
             </div>
+
             <div class='panels'>
 
                 <div class='panel'>
