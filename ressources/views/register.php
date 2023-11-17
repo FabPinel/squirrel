@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
     <link rel="stylesheet" href="..\css\register.css">
-    <title>Document</title>
+    <title>S'inscrire</title>
 </head>
 
 <body>
@@ -18,11 +18,21 @@
 
     <div class="center">
         <h1>S'inscrire</h1>
-        <form action="ressources\controller\register_controller.php" method="post" action="_URL_" enctype="multipart/form-data">
+        <form action="register_controller.php" method="post" action="_URL_" enctype="multipart/form-data">
             <div class="txt_field">
-                <input type="text" required name="name">
+                <input type="text" required name="lastname">
                 <span></span>
                 <label>Nom</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" required name="firstname">
+                <span></span>
+                <label>Prénom</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" required name="nickname">
+                <span></span>
+                <label>Pseudo</label>
             </div>
             <div class="txt_field">
                 <input type="text" required name="email">
@@ -34,16 +44,6 @@
                 <span></span>
                 <label>Mot de passe</label>
             </div>
-            <div class="txt_field">
-                <input type="tel" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" maxlength="10" required name="tel">
-                <span></span>
-                <label>Numéro de téléphone</label>
-            </div>
-            <!-- <div class="txt_field">
-        <input type="file" name="img" id="img">
-        <span></span>
-        <label>Votre image de profil (optionnel)</label>
-      </div> -->
             <input type="submit" value="envoyer">
             <div class="signup_link">
             </div>
