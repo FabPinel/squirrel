@@ -11,7 +11,7 @@ class User
     private string $picture;
     private string $bio;
     private string $role;
-    private string $createdDate;
+    private DateTime $createdDate;
     private bool $isVerified;
 
     public function __construct(
@@ -24,7 +24,7 @@ class User
         string $picture,
         string $bio,
         string $role,
-        string $createdDate,
+        DateTime $createdDate,
         bool $isVerified
     ) {
         $this->id = $id;
@@ -125,12 +125,12 @@ class User
         $this->role = $role;
     }
 
-    public function getCreatedDate(): string
+    public function getCreatedDate(): DateTime
     {
         return $this->createdDate;
     }
 
-    public function setCreatedDate(string $createdDate): void
+    public function setCreatedDate(DateTime $createdDate): void
     {
         $this->createdDate = $createdDate;
     }
