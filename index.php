@@ -29,6 +29,20 @@
             <div class='panels'>
 
                 <div class='panel'>
+                    <button class="show-modal">SHOW MODAL 1</button>
+
+                    <div class="modal hidden">
+                        <button class="close-modal">&times;</button>
+                        <form action="" method="post">
+                            <div class="modal-post">
+                                <img src="https://cdn.discordapp.com/attachments/893102098953166949/893102250690494545/IMG_20210930_134435.jpg" alt="">
+                                <input type="text" name="" id="" placeholder="J'adore quand...">
+                            </div>
+
+                            <button class="submit-modal-post">poster</button>
+                        </form>
+                    </div>
+                    <div class="overlay hidden"></div>
                     <div class="unitPanel">
                         <div class="userPost">
                             <a href="#" class="linkAvatarUser">
