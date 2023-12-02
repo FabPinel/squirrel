@@ -1,5 +1,5 @@
 <?php
-require '../Class/Post.php';
+require __DIR__ . '../../class/Post.php';
 require($_SERVER['DOCUMENT_ROOT'] . '/configbdd.php');
 session_start();
 $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
