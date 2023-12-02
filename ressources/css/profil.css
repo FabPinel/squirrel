@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 body{
-    margin: 0px 120px 0px 120px;
+    margin: 0 auto;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -244,3 +244,43 @@ body{
   .image-source-link {
     color: #DDD;
   }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        position: static;
+        border-right: none;
+        border-left: none;
+    }
+
+    .profilPic {
+        width: 20%;
+        margin-left: 0;
+        margin-top: -10%;
+    }
+
+    .banner {
+      width: 100%;
+    }
+
+    .profilEdit {
+        width: 40%;
+        margin-left: 30%;
+        margin-top: -5%;
+    }
+
+    .toggle .tabs .tab {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .toggle .panels .panel {
+        display: block;
+    }
+}

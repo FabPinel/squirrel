@@ -1,6 +1,6 @@
 <?php
 //connection à la bdd
-require_once('C:\wamp64\www\squirrel\configbdd.php');
+require_once('../../configbdd.php');
 if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['nickname']) && !empty($_POST['email'] && !empty($_POST['password']))) {
 
 
