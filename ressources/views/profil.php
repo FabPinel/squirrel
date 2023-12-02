@@ -1,3 +1,23 @@
+<?php
+require '../Class/Post.php';
+require($_SERVER['DOCUMENT_ROOT'] . '/configbdd.php');
+session_start();
+$_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+$id_user = $_GET['user'];
+$isUserSession = false;
+
+$user = User::getUserById($id_user);
+$totalPost = Post::countPostByUserId($id_user);
+$followOfUser = Post::countFollowByUserId($id_user);
+$followersOfUser = Post::countFollowersByUserId($id_user);
+
+if (isset($_SESSION['user'])) {
+    $sessionUser = User::getSessionUser($bdd);
+    if ($id_user == $sessionUser->getId()) {
+        $isUserSession = true;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,21 +34,30 @@
 <body>
     <?php include './navbar.php' ?>
     <div class="container">
-        <a href="../../index.php">RETOUR</a>
-        <h1 class="profil">Lycaon</h1>
-        <a class="post">253 posts</a>
-        <img src="https://image.noelshack.com/fichiers/2023/39/3/1695799983-banniere.jpg" alt="" class="banner">
-        <img src="https://image.noelshack.com/fichiers/2023/39/3/1695801115-pic.jpg" alt="" class="profilPic">
+        <a href="/ressources/views/login.php">LOGIN</a>
+        <a href="/ressources/views/logout.php">DECO</a>
+        <a href="../../index.php">ACCUEIL</a>
+        <h1 class="profil"><?php echo $user->getNickname(); ?></h1>
+        <a class="post"><?php echo $totalPost; ?> posts</a>
+        <img src="<?php echo $user->getBanner(); ?>" alt="" class="banner">
+        <img src="<?php echo $user->getPicture(); ?>" alt="" class="profilPic">
         <a href="http://" class="edit">
             <button class="profilEdit">Editer le profil</button>
         </a>
-
         <div class="bio">
-            <h2>Lycaon</h2>
-            <p>Trials Rising : top 1100 World , work in progress 🏆 Trials Fusion : top 300+</p>
-            <p>A rejoint Squirrel en avril 2012</p>
-            <a><strong>695</strong> abonnements</a>
-            <a><strong>166</strong> abonnés</a>
+            <div class="profilNickname">
+                <h2 class="profil"><?php echo $user->getNickname(); ?></h2>
+                <?php if ($user->isVerified()) { ?>
+                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verifiedNickname">
+                <?php } ?>
+            </div>
+            <p><?php echo $user->getBio(); ?></p>
+            <div class="profilDate">
+                <p class="profilNaissance">Naissance le <?php echo $user->formatBirthday($user->getBirthday()); ?></p>
+                <p class="profilCreatedDate">A rejoint Squirrel en <?php echo $user->formatCreatedDate($user->getCreatedDate()); ?></p>
+            </div>
+            <a><strong><?php echo $followOfUser; ?></strong> abonnements</a>
+            <a><strong><?php echo $followersOfUser; ?></strong> abonnés</a>
         </div>
         <div class='toggle'>
             <div class='tabs'>
@@ -44,7 +73,7 @@
                                 <img src="https://cdn.discordapp.com/attachments/893102098953166949/893102250690494545/IMG_20210930_134435.jpg" alt="" class="avatarUserPost">
                             </a>
                             <a href="#" class="userName">Pierre (la ruche)</a>
-                            <img src="https://w7.pngwing.com/pngs/910/897/png-transparent-twitter-verified-badge-hd-logo.png" alt="" class="verified">
+                            <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                             <p class="postTime"> 1H </p>
                         </div>
 

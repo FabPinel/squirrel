@@ -154,6 +154,24 @@ body{
     margin: 4px 0px 0px 4px;
 }
 
+.verifiedNickname{
+    width: 3%;
+    height: 3%;
+    margin: 4px 0px 0px 4px;
+}
+
+.profilNickname{
+    display: flex;
+}
+
+.profilDate {
+    display: flex;
+}
+
+.profilCreatedDate {
+    margin-left: 20px;
+}
+
 .postContent{
     margin: -34px 0px 0px 62px;
 }
@@ -282,5 +300,23 @@ body{
 
     .toggle .panels .panel {
         display: block;
+    }
+
+    .verifiedNickname{
+        width: 6%;
+        height: 6%;
+        margin: 4px 0px 0px 4px;
+    }
+
+    .profilDate {
+        flex-direction: column;
+    }
+    
+    .profilCreatedDate {
+        margin-left: 0px;
+    }
+
+    .profilEdit {
+        margin-left: 55%; 
     }
 }
