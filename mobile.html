@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Squirrel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="mobile.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="profile-icon">
+        <a href="#profile"> <!-- Ajout du lien ici -->
+            <i class="fas fa-user"></i>
+        </a>
+      </div>
+      <div class="logo">
+        <img src="https://image.noelshack.com/fichiers/2023/39/1/1695652660-logo-squirrel.png" alt="Logo" />
+      </div>
+      <div class="empty-space"></div> 
+    </div>
+
+    <div class="container stage">
+      <div class="container">
+        <div class="tabbar tab-style3">
+          <ul class="flex-center">
+            <li class="home active" data-where="acceuil">
+              <span class="material-icons-outlined">home</span>
+            </li>
+            <li class="products" data-where="recherche">
+              <span class="material-icons-outlined">search</span>
+            </li>
+            <li class="services" data-where="notifications">
+              <span class="material-icons-outlined">notifications</span>
+            </li>
+            <li class="help" data-where="parametres">
+              <span class="material-icons-outlined">settings</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="mobile.js"></script>
+  </body>
+</html>
