@@ -20,7 +20,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {  //on vérifie que l'email ait la bonne forme
             if (password_verify($password, $verif_user['password'])) {
                 $_SESSION['user'] = $verif_user['id'];
-                //header('Location: ' . $_SESSION['current_page']);
+                header('Location: ' . $_SESSION['current_page']);
                 die();
             } else {
                 echo 'Votre mot de passe ne correspond pas';
