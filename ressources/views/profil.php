@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <?php include './navbar.php' ?>
     <div class="container">
         <a href="../../index.php">RETOUR</a>
         <h1 class="profil">Lycaon</h1>
