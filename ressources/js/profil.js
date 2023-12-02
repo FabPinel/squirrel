@@ -40,3 +40,21 @@
     })();
 
 }).call(this);
+
+$(document).ready(function () {
+    // Fonction pour afficher la pop-up edit
+    function showEditProfilePopup() {
+        var popup = $('#editProfilePopup');
+        popup.show();
+    }
+
+    // Ajoutez un gestionnaire d'événements au bouton "Editer le profil"
+    var editProfileButton = $('.profilEdit');
+    editProfileButton.on('click', showEditProfilePopup);
+});
+
+// Fonction pour fermer la pop-up
+function hideEditProfilePopup() {
+    var popup = $('#editProfilePopup');
+    popup.hide();
+}

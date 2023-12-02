@@ -1,4 +1,5 @@
 <?php
+require('../../configbdd.php');
 class User
 {
     private int $id;
@@ -244,5 +245,27 @@ class User
 
         $formattedDate = $monthNames[$date->format('n') - 1] . $date->format(' Y');
         return ucfirst($formattedDate);
+    }
+
+    //Modification des informations de l'utilisateur, utilisation profil
+    public static function editUser($idUser, $nickname, $bio, $birthday)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryEditUser = $bdd->prepare("UPDATE users SET nickname=:nickname, bio=:bio, birthday=:birthday WHERE id=:id ");
+
+                if ($queryEditUser) {
+                    $queryEditUser->execute(array('nickname' => $nickname, 'bio' => $bio, 'birthday' => $birthday, 'id' => $idUser));
+                } else {
+                    echo "Erreur de préparation de la requête.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors de la mise à jour de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
     }
 }

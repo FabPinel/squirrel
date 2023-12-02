@@ -41,9 +41,7 @@ if (isset($_SESSION['user'])) {
         <a class="post"><?php echo $totalPost; ?> posts</a>
         <img src="<?php echo $user->getBanner(); ?>" alt="" class="banner">
         <img src="<?php echo $user->getPicture(); ?>" alt="" class="profilPic">
-        <a href="http://" class="edit">
-            <button class="profilEdit">Editer le profil</button>
-        </a>
+        <button class="profilEdit">Editer le profil</button>
         <div class="bio">
             <div class="profilNickname">
                 <h2 class="profil"><?php echo $user->getNickname(); ?></h2>
@@ -59,6 +57,25 @@ if (isset($_SESSION['user'])) {
             <a><strong><?php echo $followOfUser; ?></strong> abonnements</a>
             <a><strong><?php echo $followersOfUser; ?></strong> abonnés</a>
         </div>
+
+        <!-- Formulaire de modification de profil (initiallement caché) -->
+        <div id="editProfilePopup" class="popup">
+            <button class="closeButton" onclick="hideEditProfilePopup()">Fermer</button>
+            <form action="../controller/profilController.php" method="post">
+                <input type="hidden" name="idUser" value="<?php echo $id_user; ?>">
+                <label for="nickname">Pseudo:</label>
+                <input type="text" id="nickname" name="nickname" value="<?php echo $user->getNickname(); ?>">
+
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio"><?php echo $user->getBio(); ?></textarea>
+
+                <label for="birthday">Date de naissance:</label>
+                <input type="date" id="birthday" name="birthday" value="<?php echo $user->getBirthday(); ?>">
+
+                <button type="submit" name="editUser">Enregistrer</button>
+            </form>
+        </div>
+
         <div class='toggle'>
             <div class='tabs'>
                 <div class='tab active'>Posts</div>

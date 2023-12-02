@@ -212,8 +212,6 @@ body{
     cursor: zoom-in;
   }
   
-  
-  /* This block of CSS adds opacity transition to background */
   .mfp-with-zoom .mfp-container,
   .mfp-with-zoom.mfp-bg {
       opacity: 0;
@@ -236,32 +234,40 @@ body{
       opacity: 0;
   }
   
-  
-  
-  /* padding-bottom and top for image */
   .mfp-no-margins img.mfp-img {
       padding: 0;
   }
-  /* position of shadow behind the image */
+
   .mfp-no-margins .mfp-figure:after {
       top: 0;
       bottom: 0;
   }
-  /* padding for main container */
+
   .mfp-no-margins .mfp-container {
       padding: 0;
   }
   
-  
-  
-  /* aligns caption to center */
   .mfp-title {
     text-align: center;
     padding: 6px 0;
   }
+
   .image-source-link {
     color: #DDD;
   }
+
+  /* POP UP EDIT */
+  .popup {
+    display: none;     
+}
+
+.closeButton {
+    background-color: #DDB892;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
 
   @media only screen and (max-width: 500px) {
     body {
