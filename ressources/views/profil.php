@@ -154,7 +154,7 @@ if (isset($_SESSION['user'])) {
             <div class='panels'>
                 <div class='panel'>
                     <?php foreach ($posts as $post) : ?>
-                        <div class="unitPanel">
+                        <div class="unitPanelPost">
                             <div class="userPost">
                                 <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                     <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
