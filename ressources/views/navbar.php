@@ -14,9 +14,9 @@
     <!--PARTIE DESKTOP-->
     <div class="desktopBar">
         <div class="sidebar">
-            <header>
+            <div class="sidebar-top-logo">
                 <img class="logo" src="https://image.noelshack.com/fichiers/2023/39/1/1695652660-logo-squirrel.png" alt="Logo">
-            </header>
+            </div>
             <ul>
                 <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
                 <li><a href="#"><i class="fas fa-user"></i>Mon profil</a></li>
