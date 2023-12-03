@@ -72,44 +72,10 @@ class Post
     public static function countPostByUserId($id)
     {
         global $bdd;
-        $queryCards = $bdd->prepare("SELECT COUNT(*) as total FROM posts WHERE user=:idUser");
-        $queryCards->execute(array('idUser' => $id));
+        $queryCountPosts = $bdd->prepare("SELECT COUNT(*) as total FROM posts WHERE user=:idUser");
+        $queryCountPosts->execute(array('idUser' => $id));
 
-        $result = $queryCards->fetch();
-
-        if ($result) {
-            $totalLikes = $result['total'];
-            return $totalLikes;
-        } else {
-            return 0;
-        }
-    }
-
-    //Compter les comptes suivi par l'utilisateur, utilisation profil
-    public static function countFollowByUserId($id)
-    {
-        global $bdd;
-        $queryCards = $bdd->prepare("SELECT COUNT(*) as total FROM followers WHERE user=:idUser");
-        $queryCards->execute(array('idUser' => $id));
-
-        $result = $queryCards->fetch();
-
-        if ($result) {
-            $totalLikes = $result['total'];
-            return $totalLikes;
-        } else {
-            return 0;
-        }
-    }
-
-    //Compter les compte qui suivent l'utilisateur, utilisation profil
-    public static function countFollowersByUserId($id)
-    {
-        global $bdd;
-        $queryCards = $bdd->prepare("SELECT COUNT(*) as total FROM followers WHERE follower=:idUser");
-        $queryCards->execute(array('idUser' => $id));
-
-        $result = $queryCards->fetch();
+        $result = $queryCountPosts->fetch();
 
         if ($result) {
             $totalLikes = $result['total'];

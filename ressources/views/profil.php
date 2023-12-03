@@ -11,8 +11,8 @@ $isBanned = false;
 
 $user = User::getUserById($id_user);
 $totalPost = Post::countPostByUserId($id_user);
-$followOfUser = Post::countFollowByUserId($id_user);
-$followersOfUser = Post::countFollowersByUserId($id_user);
+$followOfUser = User::countFollowByUserId($id_user);
+$followersOfUser = User::countFollowersByUserId($id_user);
 
 if (isset($_SESSION['user'])) {
     $sessionUser = User::getSessionUser($bdd);

@@ -504,4 +504,38 @@ class User
             self::ban($idUser, $sessionUser);
         }
     }
+
+    //Compter les comptes suivi par l'utilisateur, utilisation profil
+    public static function countFollowByUserId($id)
+    {
+        global $bdd;
+        $queryCountFollow = $bdd->prepare("SELECT COUNT(*) as total FROM followers WHERE user=:idUser");
+        $queryCountFollow->execute(array('idUser' => $id));
+
+        $result = $queryCountFollow->fetch();
+
+        if ($result) {
+            $totalLikes = $result['total'];
+            return $totalLikes;
+        } else {
+            return 0;
+        }
+    }
+
+    //Compter les compte qui suivent l'utilisateur, utilisation profil
+    public static function countFollowersByUserId($id)
+    {
+        global $bdd;
+        $queryCountFollowers = $bdd->prepare("SELECT COUNT(*) as total FROM followers WHERE follower=:idUser");
+        $queryCountFollowers->execute(array('idUser' => $id));
+
+        $result = $queryCountFollowers->fetch();
+
+        if ($result) {
+            $totalLikes = $result['total'];
+            return $totalLikes;
+        } else {
+            return 0;
+        }
+    }
 }
