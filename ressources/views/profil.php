@@ -5,6 +5,7 @@ session_start();
 $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
 $id_user = $_GET['user'];
 $isUserSession = false;
+$isFollow = false;
 
 $user = User::getUserById($id_user);
 $totalPost = Post::countPostByUserId($id_user);
@@ -16,7 +17,9 @@ if (isset($_SESSION['user'])) {
     if ($id_user == $sessionUser->getId()) {
         $isUserSession = true;
     }
+    $isFollow = User::getFollow($sessionUser->getId(), $id_user);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -41,7 +44,27 @@ if (isset($_SESSION['user'])) {
         <a class="post"><?php echo $totalPost; ?> posts</a>
         <img src="<?php echo $user->getBanner(); ?>" alt="" class="banner">
         <img src="<?php echo $user->getPicture(); ?>" alt="" class="profilPic">
-        <button class="profilEdit">Editer le profil</button>
+        <?php if (isset($_SESSION['user'])) {
+            if ($isUserSession) { ?>
+                <button class="profilEdit">Editer le profil</button>
+                <?php } else {
+                if ($isFollow) { ?>
+                    <form action="../controller/profilController.php" method="post">
+                        <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
+                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                        <button class="isFollow" name="follow">Suivi ✔</button>
+                    </form>
+                <?php } else { ?>
+                    <form action="../controller/profilController.php" method="post">
+                        <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
+                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                        <button class="follow" name="follow">Suivre</button>
+                    </form>
+        <?php
+                }
+            }
+        }
+        ?>
         <div class="bio">
             <div class="profilNickname">
                 <h2 class="profil"><?php echo $user->getNickname(); ?></h2>

@@ -2,7 +2,8 @@
 session_start();
 require('../class/User.php');
 require('../../configbdd.php');
-//Mise à jour d'une thématique
+
+//Mise à jour d'un user
 if (isset($_POST['editUser'])) {
     $idUser = $_POST['idUser'];
     $nickname = $_POST['nickname'];
@@ -11,9 +12,18 @@ if (isset($_POST['editUser'])) {
     $banner = $_POST['bannerEdit'];
     $picture = $_POST['pictureEdit'];
 
-    var_dump($idUser, $nickname, $bio, $birthday);
-
     User::editUser($idUser, $nickname, $bio, $birthday, $banner, $picture);
+
+    header('Location: ' . $_SESSION['current_page']);
+    exit;
+}
+
+//Follow d'un user
+if (isset($_POST['follow'])) {
+    $sessionUser = $_POST['sessionUser'];
+    $userProfil = $_POST['userProfil'];
+
+    User::toggleFollow($sessionUser, $userProfil);
 
     header('Location: ' . $_SESSION['current_page']);
     exit;

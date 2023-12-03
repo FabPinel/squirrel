@@ -35,6 +35,37 @@ body{
     cursor: pointer;
 }
 
+.follow, .isFollow {
+    border-radius: 40px;
+    border: 1px solid rgb(205, 203, 203);
+    padding: 10px 20px;
+    background: rgb(255, 255, 255);
+    font-size: 2em;
+    width: 20%;
+    height: 10%;
+    font-size: 1em;
+    margin-left: 74%; 
+    margin-top: -10%;
+    transition: 0.5s;
+}
+
+.isFollow {
+    background: #E6CCB2;
+}
+
+.follow:hover {
+    background:rgb(230, 228, 228);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.isFollow:hover{
+    background:rgb(245, 176, 176);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
 .edit {
     padding-top:-10%;
 }

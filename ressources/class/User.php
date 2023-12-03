@@ -268,4 +268,88 @@ class User
             echo "Erreur de connexion à la base de données.";
         }
     }
+
+    //Vérifier si l'utilisateur suit le profil qu'il visite
+    public static function getFollow($sessionUser, $userProfil)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryFollowUser = $bdd->prepare("SELECT * FROM followers WHERE user=:user AND follower=:follower");
+
+                if ($queryFollowUser) {
+                    $queryFollowUser->execute(array('user' => $sessionUser, 'follower' => $userProfil));
+
+                    $isFollow = $queryFollowUser->rowCount() > 0;
+
+                    return $isFollow;
+                } else {
+                    echo "Erreur de préparation de la requête.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors du follow de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+
+        return false;
+    }
+
+    //Suivre un utilisateur
+    public static function follow($sessionUser, $userProfil)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryFollowUser = $bdd->prepare("INSERT INTO followers (user, follower) VALUES (:user ,:follower)");
+
+                if ($queryFollowUser) {
+                    $queryFollowUser->execute(array('user' => $sessionUser, 'follower' => $userProfil));
+                } else {
+                    echo "Erreur de préparation de la requête.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors du follow de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+    }
+
+    // Désabonner un utilisateur
+    public static function unfollow($sessionUser, $userProfil)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryUnfollowUser = $bdd->prepare("DELETE FROM followers WHERE user=:user AND follower=:follower");
+
+                if ($queryUnfollowUser) {
+                    $queryUnfollowUser->execute(array('user' => $sessionUser, 'follower' => $userProfil));
+                } else {
+                    echo "Erreur de préparation de la requête de désabonnement.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors du désabonnement de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+    }
+
+    // Gérer le suivi/désabonnement en fonction de l'état actuel
+    public static function toggleFollow($sessionUser, $userProfil)
+    {
+        $isFollow = self::getFollow($sessionUser, $userProfil);
+
+        if ($isFollow) {
+            self::unfollow($sessionUser, $userProfil);
+        } else {
+            self::follow($sessionUser, $userProfil);
+        }
+    }
 }
