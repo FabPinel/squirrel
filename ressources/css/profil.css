@@ -256,17 +256,105 @@ body{
     color: #DDD;
   }
 
-  /* POP UP EDIT */
-  .popup {
-    display: none;     
+/* POP UP EDIT */
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.popup {
+    display: grid;
+    grid-template-rows: repeat(6, auto); /* 4 lignes pour 4 champs */
+    gap: 10px;
+    padding: 20px;
+    position: absolute;
+    display: none;
+    background-color: rgb(255, 255, 255);
+    width: 30vw;
+    height: 38vw;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+    z-index: 1000;
+    top: 22vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup label {
+    display: block;
+}
+
+.popup input[type="text"],
+.popup textarea,
+.popup input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
 }
 
 .closeButton {
-    background-color: #DDB892;
-    color: #fff;
+    color: #000000;
     padding: 10px;
     border: none;
     cursor: pointer;
+    border-radius: 25%;
+    transition: 0.5s;
+    background-color: #ffffff;
+}
+
+.closeButton:hover {
+    background-color: #efefef;
+    transition: 0.5s;
+}
+
+.editUser {
+    text-align: center;
+    padding: 15px 25px; 
+    background-color: #E6CCB2;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    margin-top: 1vw;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.5s;
+}
+  
+.editUser:hover {
+    background-color: #7F5539;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.bannerEdit {
+    width: 100%;
+}
+
+.profilPicEdit {
+    border-radius: 50%;
+    width: 20%;
+    margin-left: 3%;
+    border: solid 4px white;
+    margin-top: -12%;
+}
+
+.popupTitle {
+    display: flex;
+    margin-bottom: 1vw;
+}
+
+.title {
+    margin-left: 1vw;
 }
 
   @media only screen and (max-width: 500px) {
@@ -324,5 +412,11 @@ body{
 
     .profilEdit {
         margin-left: 55%; 
+    }
+
+    .popup {
+        width: 80vw;
+        height: 150vw;
+        top: 50%;
     }
 }

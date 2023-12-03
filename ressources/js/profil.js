@@ -41,20 +41,30 @@
 
 }).call(this);
 
+//Fonction pour ouvrir et fermer la pop up edit profil
 $(document).ready(function () {
-    // Fonction pour afficher la pop-up edit
     function showEditProfilePopup() {
         var popup = $('#editProfilePopup');
+        var overlay = $('#overlay');
+
         popup.show();
+        overlay.show();
     }
 
-    // Ajoutez un gestionnaire d'événements au bouton "Editer le profil"
     var editProfileButton = $('.profilEdit');
     editProfileButton.on('click', showEditProfilePopup);
-});
 
-// Fonction pour fermer la pop-up
-function hideEditProfilePopup() {
-    var popup = $('#editProfilePopup');
-    popup.hide();
-}
+    function hideEditProfilePopup() {
+        var popup = $('#editProfilePopup');
+        var overlay = $('#overlay');
+
+        popup.hide();
+        overlay.hide();
+    }
+
+    var closeButton = $('.closeButton');
+    closeButton.on('click', hideEditProfilePopup);
+
+    var overlay = $('#overlay');
+    overlay.on('click', hideEditProfilePopup);
+});

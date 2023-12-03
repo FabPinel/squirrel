@@ -58,11 +58,24 @@ if (isset($_SESSION['user'])) {
             <a><strong><?php echo $followersOfUser; ?></strong> abonnés</a>
         </div>
 
+        <div id="overlay"></div>
+
         <!-- Formulaire de modification de profil (initiallement caché) -->
         <div id="editProfilePopup" class="popup">
-            <button class="closeButton" onclick="hideEditProfilePopup()">Fermer</button>
+            <div class="popupTitle">
+                <button class="closeButton" onclick="hideEditProfilePopup()">X</button>
+                <h2 class="title">Éditer le profil</h2>
+            </div>
             <form action="../controller/profilController.php" method="post">
                 <input type="hidden" name="idUser" value="<?php echo $id_user; ?>">
+                <img src="<?php echo $user->getBanner(); ?>" alt="" class="bannerEdit">
+                <img src="<?php echo $user->getPicture(); ?>" alt="" class="profilPicEdit">
+                <label for="bannerEdit">Bannière:</label>
+                <input type="text" id="bannerEdit" name="bannerEdit" value="<?php echo $user->getBanner(); ?>">
+
+                <label for="pictureEdit">Photo de profil:</label>
+                <input type="text" id="pictureEdit" name="pictureEdit" value="<?php echo $user->getPicture(); ?>">
+
                 <label for="nickname">Pseudo:</label>
                 <input type="text" id="nickname" name="nickname" value="<?php echo $user->getNickname(); ?>">
 
@@ -72,7 +85,7 @@ if (isset($_SESSION['user'])) {
                 <label for="birthday">Date de naissance:</label>
                 <input type="date" id="birthday" name="birthday" value="<?php echo $user->getBirthday(); ?>">
 
-                <button type="submit" name="editUser">Enregistrer</button>
+                <button type="submit" name="editUser" class="editUser">Enregistrer</button>
             </form>
         </div>
 

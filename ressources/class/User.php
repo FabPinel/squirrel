@@ -248,16 +248,16 @@ class User
     }
 
     //Modification des informations de l'utilisateur, utilisation profil
-    public static function editUser($idUser, $nickname, $bio, $birthday)
+    public static function editUser($idUser, $nickname, $bio, $birthday, $banner, $picture)
     {
         global $bdd;
 
         if ($bdd) {
             try {
-                $queryEditUser = $bdd->prepare("UPDATE users SET nickname=:nickname, bio=:bio, birthday=:birthday WHERE id=:id ");
+                $queryEditUser = $bdd->prepare("UPDATE users SET nickname=:nickname, bio=:bio, birthday=:birthday, banner=:banner, picture=:picture WHERE id=:id ");
 
                 if ($queryEditUser) {
-                    $queryEditUser->execute(array('nickname' => $nickname, 'bio' => $bio, 'birthday' => $birthday, 'id' => $idUser));
+                    $queryEditUser->execute(array('nickname' => $nickname, 'bio' => $bio, 'birthday' => $birthday, 'banner' => $banner, 'picture' => $picture, 'id' => $idUser));
                 } else {
                     echo "Erreur de préparation de la requête.";
                 }
