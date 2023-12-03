@@ -59,7 +59,7 @@ body{
     transition: 0.5s;
 }
 
-.isFollow:hover{
+.isFollow:hover, .isCertif:hover {
     background:rgb(245, 176, 176);
     cursor: pointer;
     transition: 0.5s;
@@ -79,7 +79,7 @@ body{
     width: 100%;
 }
 
-.certif, .ban {
+.certif, .ban, .isCertif {
     border-radius: 40px;
     border: 1px solid rgb(205, 203, 203);
     padding: 15px 30px;

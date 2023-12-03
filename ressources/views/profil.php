@@ -6,6 +6,7 @@ $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
 $id_user = $_GET['user'];
 $isUserSession = false;
 $isFollow = false;
+$isCertified = false;
 
 $user = User::getUserById($id_user);
 $totalPost = Post::countPostByUserId($id_user);
@@ -18,6 +19,7 @@ if (isset($_SESSION['user'])) {
         $isUserSession = true;
     }
     $isFollow = User::getFollow($sessionUser->getId(), $id_user);
+    $isCertified = User::getCertif($id_user);
 }
 
 ?>
@@ -79,16 +81,24 @@ if (isset($_SESSION['user'])) {
             </div>
             <a><strong><?php echo $followOfUser; ?></strong> abonnements</a>
             <a><strong><?php echo $followersOfUser; ?></strong> abonnés</a>
-            <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin') { ?>
+            <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' && !$isUserSession) { ?>
                 <div class="profilAdmin">
-                    <form action="../controller/profilController.php" method="post">
-                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
-                        <button class="certif" name="certif">Certifier</button>
-                    </form>
+                    <?php if ($isCertified) { ?>
+                        <form action="../controller/profilController.php" method="post">
+                            <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                            <button class="isCertif" name="certif">Certifier ✔</button>
+                        </form>
+                    <?php } else { ?>
+                        <form action="../controller/profilController.php" method="post">
+                            <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                            <button class="certif" name="certif">Certifier</button>
+                        </form>
+                    <?php } ?>
                     <form action="../controller/profilController.php" method="post">
                         <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
                         <button class="ban" name="ban">Bannir</button>
                     </form>
+
                 </div>
             <?php } ?>
         </div>
