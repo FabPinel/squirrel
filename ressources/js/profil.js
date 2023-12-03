@@ -68,3 +68,44 @@ $(document).ready(function () {
     var overlay = $('#overlay');
     overlay.on('click', hideEditProfilePopup);
 });
+
+//Fonction Like
+$(document).on('click', '.like-button', function () {
+    var postId = $(this).parent().data('post-id');
+    var userId = $(this).parent().data('user-id');
+
+    var likeButton = $(this);
+    var likePost = likeButton.closest('.likePost');
+    var likeCountElement = likePost.find('.like-count');
+
+    console.log("postId:", postId);
+    console.log("userId:", userId);
+
+    $.ajax({
+        url: '../controller/profilController.php',
+        method: 'POST',
+        data: { postId: postId, userId: userId, action: 'toggleLike' },
+        success: function (response) {
+            var jsonResponse = JSON.parse(response);
+            console.log("AJAX Response:", jsonResponse);
+            console.log("Likes Count:", jsonResponse.likesCount);
+
+            likeButton.css('color', jsonResponse.isLiked ? 'red' : 'black');
+
+            // Ajoutez ou supprimez la classe 'like-active' en fonction de l'état du like
+            likePost.toggleClass('like-active', jsonResponse.isLiked);
+
+            updateLikeCount(jsonResponse.likesCount, likeCountElement);
+        },
+
+        error: function () {
+            console.log('Erreur lors de la requête AJAX');
+        }
+    });
+});
+
+// Fonction de rappel pour mettre à jour le nombre de likes
+function updateLikeCount(likesCount, likeCountElement) {
+    likeCountElement.text(likesCount);
+    console.log("Updated Likes Count:", likesCount);
+}

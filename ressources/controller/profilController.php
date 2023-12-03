@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../class/User.php');
+require('../class/Post.php');
 require('../../configbdd.php');
 
 //Mise à jour d'un user
@@ -47,5 +47,20 @@ if (isset($_POST['ban'])) {
     User::toggleBan($sessionUser, $userProfil);
 
     header('Location: ' . $_SESSION['current_page']);
+    exit;
+}
+
+// Gestion des likes / dislikes
+if (isset($_POST['action']) && $_POST['action'] == 'toggleLike') {
+    $postId = $_POST['postId'];
+    $userId = $_POST['userId'];
+
+    Post::toggleLike($postId, $userId);
+
+    // Récupérez le nouveau nombre de likes après le toggle
+    $likesCount = Post::countLikeByPostId($postId);
+
+    // Ajoutez un message de débogage
+    echo json_encode(['isLiked' => Post::isLiked($postId, $userId), 'likesCount' => $likesCount]);
     exit;
 }

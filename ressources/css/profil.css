@@ -252,9 +252,25 @@ body{
     align-items: flex-start;
     margin: 14px 0px 0px 62px;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .likePost:hover{
+    color: red;
+    transition: 0.5s;
+}
+
+.likePost.like-active .material-symbols-outlined.like-button {
+    color: black;
+    transition: 0.5s;
+}
+
+.likePost.like-active .material-symbols-outlined.like-button:hover {
+    color: red;
+    transition: 0.5s;
+}
+
+.likePost.like-active .material-icons-outlined.like-button {
     color: red;
     transition: 0.5s;
 }

@@ -171,11 +171,13 @@ if (isset($_SESSION['user'])) {
                                         <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
                                     </a>
                             </div>
-                            <div class="likePost">
-                                <span class="material-symbols-outlined" style="font-size: 22px;">
+                            <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
+                                <span class="material-icons-outlined like-button" style="font-size: 22px;">
                                     favorite
                                 </span>
-                                <p class="numberLike">5</p>
+                                <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                    <?= Post::countLikeByPostId($post->getId()); ?>
+                                </p>
                             </div>
                         </div>
                     <?php endforeach; ?>

@@ -182,4 +182,58 @@ class Post
             }
         }
     }
+
+    //Vérifier si l'utilisateur connecté a like un poste
+    public static function isLiked($idPost, $idUser)
+    {
+        global $bdd;
+        $queryIsLike = $bdd->prepare("SELECT COUNT(*) as total FROM postlikes as pl WHERE post=:idPost and user=:idUser");
+        $queryIsLike->execute(array('idPost' => $idPost, 'idUser' => $idUser));
+
+        $result = $queryIsLike->fetch();
+
+        if ($result['total'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Like d'un poste
+    public static function likeByPostId($idPost, $idUser)
+    {
+        global $bdd;
+        $queryLike = $bdd->prepare("INSERT INTO postlikes (user, post) VALUES(:idUser, :idPost)");
+        $queryLike->execute(array('idPost' => $idPost, 'idUser' => $idUser));
+    }
+
+    //Dislike d'un poste
+    public static function dislikeByPostId($idPost, $idUser)
+    {
+        global $bdd;
+        $queryLike = $bdd->prepare("DELETE FROM postlikes WHERE user=:idUser AND post=:idPost");
+        $queryLike->execute(array('idPost' => $idPost, 'idUser' => $idUser));
+    }
+
+    //Gestion des likes / dislikes
+    public static function toggleLike($idPost, $idUser)
+    {
+        if (self::isLiked($idPost, $idUser)) {
+            self::dislikeByPostId($idPost, $idUser);
+        } else {
+            self::likeByPostId($idPost, $idUser);
+        }
+    }
+
+    //Compter les likes d'un poste
+    public static function countLikeByPostId($idPost)
+    {
+        global $bdd;
+        $queryCountLike = $bdd->prepare("SELECT COUNT(*) as total FROM postlikes as pl WHERE post=:idPost");
+        $queryCountLike->execute(array('idPost' => $idPost));
+
+        $result = $queryCountLike->fetch();
+
+        return $result['total'];
+    }
 }
