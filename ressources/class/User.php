@@ -352,4 +352,72 @@ class User
             self::follow($sessionUser, $userProfil);
         }
     }
+
+    //Vérifier si l'utilisateur est certifié
+    public static function getCertif($idUser)
+    {
+        $user = self::getUserById($idUser);
+
+        if ($user) {
+            return $user->isVerified();
+        }
+
+        return false;
+    }
+
+    //Cerifier un utilisateur
+    public static function certified($idUser)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryCertifwUser = $bdd->prepare("UPDATE users SET isVerify = true WHERE id=:user ");
+
+                if ($queryCertifwUser) {
+                    $queryCertifwUser->execute(array('user' => $idUser));
+                } else {
+                    echo "Erreur de préparation de la requête.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors de la certification de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+    }
+
+    // Désabonner un utilisateur
+    public static function uncertified($idUser)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryUnCertifiedUser = $bdd->prepare("UPDATE users SET isVerify = false WHERE id=:user ");
+
+                if ($queryUnCertifiedUser) {
+                    $queryUnCertifiedUser->execute(array('user' => $idUser));
+                } else {
+                    echo "Erreur de préparation de la requête de désabonnement.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors de la dé certification de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+    }
+
+    // Gérer le suivi/désabonnement en fonction de l'état actuel
+    public static function toggleCertified($idUser)
+    {
+        $isCertified = self::getCertif($idUser);
+
+        if ($isCertified) {
+            self::uncertified($idUser);
+        } else {
+            self::certified($idUser);
+        }
+    }
 }

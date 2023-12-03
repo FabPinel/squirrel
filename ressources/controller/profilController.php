@@ -28,3 +28,13 @@ if (isset($_POST['follow'])) {
     header('Location: ' . $_SESSION['current_page']);
     exit;
 }
+
+//Certif d'un user
+if (isset($_POST['certif'])) {
+    $userProfil = $_POST['userProfil'];
+
+    User::toggleCertified($userProfil);
+
+    header('Location: ' . $_SESSION['current_page']);
+    exit;
+}

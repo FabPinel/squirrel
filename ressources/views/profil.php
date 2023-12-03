@@ -79,6 +79,18 @@ if (isset($_SESSION['user'])) {
             </div>
             <a><strong><?php echo $followOfUser; ?></strong> abonnements</a>
             <a><strong><?php echo $followersOfUser; ?></strong> abonnés</a>
+            <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin') { ?>
+                <div class="profilAdmin">
+                    <form action="../controller/profilController.php" method="post">
+                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                        <button class="certif" name="certif">Certifier</button>
+                    </form>
+                    <form action="../controller/profilController.php" method="post">
+                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                        <button class="ban" name="ban">Bannir</button>
+                    </form>
+                </div>
+            <?php } ?>
         </div>
 
         <div id="overlay"></div>
