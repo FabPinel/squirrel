@@ -38,3 +38,14 @@ if (isset($_POST['certif'])) {
     header('Location: ' . $_SESSION['current_page']);
     exit;
 }
+
+//Ban d'un user
+if (isset($_POST['ban'])) {
+    $userProfil = $_POST['userProfil'];
+    $sessionUser = $_POST['sessionUser'];
+
+    User::toggleBan($sessionUser, $userProfil);
+
+    header('Location: ' . $_SESSION['current_page']);
+    exit;
+}

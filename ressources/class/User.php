@@ -420,4 +420,88 @@ class User
             self::certified($idUser);
         }
     }
+
+    //Vérifier si l'utilisateur est ban
+    public static function getBan($idUser)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryBanUser = $bdd->prepare("SELECT * FROM bans WHERE user=:user");
+
+                if ($queryBanUser) {
+                    $queryBanUser->execute(array('user' => $idUser));
+
+                    $isBanned = $queryBanUser->rowCount() > 0;
+
+                    return $isBanned;
+                } else {
+                    echo "Erreur de préparation de la requête.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors du follow de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+
+        return false;
+    }
+
+    //Suivre un utilisateur
+    public static function ban($idUser, $sessionUser)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryBanUser = $bdd->prepare("INSERT INTO bans (user, bannedBy) VALUES (:user ,:sessionUser)");
+
+                if ($queryBanUser) {
+                    $queryBanUser->execute(array('user' => $idUser, 'sessionUser' => $sessionUser));
+                } else {
+                    echo "Erreur de préparation de la requête.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors du ban de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+    }
+
+    // Désabonner un utilisateur
+    public static function unBan($sessionUser)
+    {
+        global $bdd;
+
+        if ($bdd) {
+            try {
+                $queryUnfollowUser = $bdd->prepare("DELETE FROM bans WHERE user=:user");
+
+                if ($queryUnfollowUser) {
+                    $queryUnfollowUser->execute(array('user' => $sessionUser));
+                } else {
+                    echo "Erreur de préparation de la requête de désabonnement.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur lors du unban de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur de connexion à la base de données.";
+        }
+    }
+
+    // Gérer le suivi/désabonnement en fonction de l'état actuel
+    public static function toggleBan($sessionUser, $idUser)
+    {
+        $isBanned = self::getBan($idUser);
+
+        if ($isBanned) {
+            self::unBan($idUser);
+        } else {
+            self::ban($idUser, $sessionUser);
+        }
+    }
 }

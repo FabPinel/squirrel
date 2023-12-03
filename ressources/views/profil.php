@@ -7,6 +7,7 @@ $id_user = $_GET['user'];
 $isUserSession = false;
 $isFollow = false;
 $isCertified = false;
+$isBanned = false;
 
 $user = User::getUserById($id_user);
 $totalPost = Post::countPostByUserId($id_user);
@@ -20,6 +21,7 @@ if (isset($_SESSION['user'])) {
     }
     $isFollow = User::getFollow($sessionUser->getId(), $id_user);
     $isCertified = User::getCertif($id_user);
+    $isBanned = User::getBan($id_user);
 }
 
 ?>
@@ -93,11 +95,20 @@ if (isset($_SESSION['user'])) {
                             <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
                             <button class="certif" name="certif">Certifier</button>
                         </form>
+                    <?php }
+                    if ($isBanned) { ?>
+                        <form action="../controller/profilController.php" method="post">
+                            <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                            <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
+                            <button class="isBanned" name="ban">Bannir ✔</button>
+                        </form>
+                    <?php } else { ?>
+                        <form action="../controller/profilController.php" method="post">
+                            <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                            <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
+                            <button class="ban" name="ban">Bannir</button>
+                        </form>
                     <?php } ?>
-                    <form action="../controller/profilController.php" method="post">
-                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
-                        <button class="ban" name="ban">Bannir</button>
-                    </form>
 
                 </div>
             <?php } ?>
