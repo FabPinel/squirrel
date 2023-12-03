@@ -336,7 +336,7 @@ body{
     display: none;
     background-color: rgb(255, 255, 255);
     width: 30vw;
-    height: 38vw;
+    height: 40vw;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 20px;
     z-index: 1000;
@@ -368,6 +368,8 @@ body{
     border-radius: 25%;
     transition: 0.5s;
     background-color: #ffffff;
+    height: 2vw;
+    margin-top: 1vw;
 }
 
 .closeButton:hover {

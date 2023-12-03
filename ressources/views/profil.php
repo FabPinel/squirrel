@@ -9,6 +9,7 @@ $isFollow = false;
 $isCertified = false;
 $isBanned = false;
 
+$posts = Post::getAllPostsByUserId($id_user);
 $user = User::getUserById($id_user);
 $totalPost = Post::countPostByUserId($id_user);
 $followOfUser = User::countFollowByUserId($id_user);
@@ -109,7 +110,6 @@ if (isset($_SESSION['user'])) {
                             <button class="ban" name="ban">Bannir</button>
                         </form>
                     <?php } ?>
-
                 </div>
             <?php } ?>
         </div>
@@ -153,30 +153,32 @@ if (isset($_SESSION['user'])) {
             </div>
             <div class='panels'>
                 <div class='panel'>
-                    <div class="unitPanel">
-                        <div class="userPost">
-                            <a href="#" class="linkAvatarUser">
-                                <img src="https://cdn.discordapp.com/attachments/893102098953166949/893102250690494545/IMG_20210930_134435.jpg" alt="" class="avatarUserPost">
-                            </a>
-                            <a href="#" class="userName">Pierre (la ruche)</a>
-                            <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                            <p class="postTime"> 1H </p>
+                    <?php foreach ($posts as $post) : ?>
+                        <div class="unitPanel">
+                            <div class="userPost">
+                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
+                                    <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                </a>
+                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
+                                <?php if (User::getCertif($post->getUser()->getId())) { ?>
+                                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                                <?php } ?>
+                                <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                            </div>
+                            <div class="postContent">
+                                <p class="textPost"><?= $post->getTexte(); ?></a>
+                                    <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                                        <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                    </a>
+                            </div>
+                            <div class="likePost">
+                                <span class="material-symbols-outlined" style="font-size: 22px;">
+                                    favorite
+                                </span>
+                                <p class="numberLike">5</p>
+                            </div>
                         </div>
-
-                        <div class="postContent">
-                            <p class="textPost">🌟🏡 "La Vendée, c'est la pépite de la France ! Des plages magnifiques, une culture riche, et une histoire profonde. Quand je ne suis pas en train de savourer nos délicieux fruits de mer ou nos vins locaux incroyables, vous me trouverez en train de porter fièrement les couleurs du Borussia Dortmund. Un mélange de l'élégance à la française et de la passion du football allemand ! 💛⚽"</p> <a href="#" style="color: #1D9BF0;">#Vendée #Haaland #EchteLiebe #12anscestparfait #stonks</a>
-                            <a href="https://img.freepik.com/photos-gratuite/crane-nombreuses-parties-differentes-dessus_698780-1005.jpg?w=740&t=st=1695668788~exp=1695669388~hmac=9936392524ad6b11019c2d029dd22d7f6109b088b006ce6f6ff7b1194329e075" class="without-caption image-link">
-                                <img src="https://cdn.discordapp.com/attachments/893102098953166949/900024945709576202/IMG_20211019_160836.jpg" alt="" class="imgPost">
-                            </a>
-                        </div>
-
-                        <div class="likePost">
-                            <span class="material-symbols-outlined" style="font-size: 22px;">
-                                favorite
-                            </span>
-                            <p class="numberLike">5</p>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
 
                 <div class='panel'>
