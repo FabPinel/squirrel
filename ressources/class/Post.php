@@ -90,7 +90,19 @@ class Post
     {
         global $bdd;
 
-        $queryCards = $bdd->prepare("SELECT p.*, u.nickname as user_nickname, u.id as user_id, u.lastName as user_lastName, u.firstName as user_firstName, u.email as user_email, u.role as user_role, u.picture as user_picture, u.banner as user_banner, u.bio as user_bio, u.createdDate as user_createdDate, u.birthday as user_birthday, u.isVerify as user_isVerify FROM posts p
+        $queryCards = $bdd->prepare("SELECT p.*, 
+        u.nickname as user_nickname, 
+        u.id as user_id, u.lastName as user_lastName, 
+        u.firstName as user_firstName, 
+        u.email as user_email, 
+        u.role as user_role, 
+        u.picture as user_picture, 
+        u.banner as user_banner, 
+        u.bio as user_bio, 
+        u.createdDate as user_createdDate, 
+        u.birthday as user_birthday,
+        u.isVerify as user_isVerify 
+        FROM posts p
         JOIN users u ON p.user = u.id ORDER BY p.createdDate DESC");
         $queryCards->execute();
 
@@ -124,18 +136,143 @@ class Post
         return $posts;
     }
 
-    //Récupérer tous les post
+    //Récupérer tous les post de l'utilisateur
     public static function getAllPostsByUserId($idUser)
     {
         global $bdd;
 
-        $queryCards = $bdd->prepare("SELECT p.*, u.nickname as user_nickname, u.id as user_id, u.lastName as user_lastName, u.firstName as user_firstName, u.email as user_email, u.role as user_role, u.picture as user_picture, u.banner as user_banner, u.bio as user_bio, u.createdDate as user_createdDate, u.birthday as user_birthday, u.isVerify as user_isVerify FROM posts p
-            JOIN users u ON p.user = u.id WHERE p.user=:idUser ORDER BY p.createdDate DESC");
-        $queryCards->execute(array('idUser' => $idUser));
+        $queryPosts = $bdd->prepare("SELECT p.*, 
+        u.nickname as user_nickname, 
+        u.id as user_id, 
+        u.lastName as user_lastName, 
+        u.firstName as user_firstName,
+        u.email as user_email, 
+        u.role as user_role, 
+        u.picture as user_picture, 
+        u.banner as user_banner, 
+        u.bio as user_bio, 
+        u.createdDate as user_createdDate, 
+        u.birthday as user_birthday, 
+        u.isVerify as user_isVerify 
+        FROM posts p
+        JOIN users u ON p.user = u.id 
+        WHERE p.user=:idUser 
+        ORDER BY p.createdDate DESC");
+        $queryPosts->execute(array('idUser' => $idUser));
 
         $posts = [];
 
-        while ($row = $queryCards->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $queryPosts->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User(
+                $row['user_id'],
+                $row['user_firstName'],
+                $row['user_lastName'],
+                $row['user_nickname'],
+                $row['user_email'],
+                $row['user_picture'],
+                $row['user_banner'],
+                $row['user_bio'],
+                $row['user_role'],
+                $row['user_createdDate'],
+                $row['user_birthday'],
+                $row['user_isVerify']
+            );
+
+            $posts[] = new Post(
+                $row['id'],
+                $row['texte'],
+                $row['media'],
+                $user,
+                $row['createdDate']
+            );
+        }
+
+        return $posts;
+    }
+
+    //Récupérer tous les post comment par l'utilisateur
+    public static function getAllPostsCommentByUserId($idUser)
+    {
+        global $bdd;
+
+        $queryPost = $bdd->prepare("SELECT p.*, 
+            u.nickname as user_nickname, 
+            u.id as user_id, 
+            u.lastName as user_lastName, 
+            u.firstName as user_firstName, 
+            u.email as user_email, 
+            u.role as user_role, 
+            u.picture as user_picture, 
+            u.banner as user_banner, 
+            u.bio as user_bio, 
+            u.createdDate as user_createdDate, 
+            u.birthday as user_birthday, 
+            u.isVerify as user_isVerify 
+            FROM posts p
+            JOIN users u ON p.user = u.id
+            JOIN comments c ON p.id = c.post
+            WHERE c.user = :idUser
+            ORDER BY p.createdDate DESC;");
+        $queryPost->execute(array('idUser' => $idUser));
+
+        $posts = [];
+
+        while ($row = $queryPost->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User(
+                $row['user_id'],
+                $row['user_firstName'],
+                $row['user_lastName'],
+                $row['user_nickname'],
+                $row['user_email'],
+                $row['user_picture'],
+                $row['user_banner'],
+                $row['user_bio'],
+                $row['user_role'],
+                $row['user_createdDate'],
+                $row['user_birthday'],
+                $row['user_isVerify']
+            );
+
+            $posts[] = new Post(
+                $row['id'],
+                $row['texte'],
+                $row['media'],
+                $user,
+                $row['createdDate']
+            );
+        }
+
+        return $posts;
+    }
+
+    //Récupérer tous les post like par l'utilisateur
+    public static function getAllPostsLikeByUserId($idUser)
+    {
+        global $bdd;
+
+        $queryPost = $bdd->prepare("SELECT p.*, 
+                u.nickname as user_nickname, 
+                u.id as user_id, 
+                u.lastName as user_lastName, 
+                u.firstName as user_firstName, 
+                u.email as user_email, 
+                u.role as user_role, 
+                u.picture as user_picture, 
+                u.banner as user_banner, 
+                u.bio as user_bio, 
+                u.createdDate as user_createdDate, 
+                u.birthday as user_birthday, 
+                u.isVerify as user_isVerify 
+                FROM posts p
+                JOIN users u ON p.user = u.id
+                JOIN postlikes pl ON p.id = pl.post
+                WHERE c.user = :idUser
+                ORDER BY p.createdDate DESC;");
+        $queryPost->execute(array('idUser' => $idUser));
+
+        $posts = [];
+
+        while ($row = $queryPost->fetch(PDO::FETCH_ASSOC)) {
             $user = new User(
                 $row['user_id'],
                 $row['user_firstName'],
