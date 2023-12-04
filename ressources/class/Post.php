@@ -195,7 +195,7 @@ class Post
     {
         global $bdd;
 
-        $queryPost = $bdd->prepare("SELECT p.*, 
+        $queryPost = $bdd->prepare("SELECT DISTINCT p.*, 
             u.nickname as user_nickname, 
             u.id as user_id, 
             u.lastName as user_lastName, 

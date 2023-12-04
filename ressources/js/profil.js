@@ -123,3 +123,17 @@ function checkCommentText() {
         submitButton.removeClass('active');
     }
 }
+
+//gestion redirection du post
+
+$(document).ready(function () {
+    $(".clickable-post").click(function (e) {
+        var target = $(e.target);
+        if (!target.is(".likePost, .like-button, .userName, .linkAvatarUser")) {
+            // Si l'élément cliqué n'est pas le bouton "like" ou le lien vers le profil,
+            // effectuez la redirection vers la page du post.
+            var postId = $(this).data("post-id");
+            window.location.href = "post.php?post=" + postId;
+        }
+    });
+});

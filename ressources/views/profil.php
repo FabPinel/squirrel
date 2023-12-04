@@ -156,7 +156,7 @@ if (isset($_SESSION['user'])) {
             <div class='panels'>
                 <div class='panel'>
                     <?php foreach ($posts as $post) : ?>
-                        <div class="unitPanelPost">
+                        <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                             <div class="userPost">
                                 <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                     <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
@@ -168,10 +168,12 @@ if (isset($_SESSION['user'])) {
                                 <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
                             </div>
                             <div class="postContent">
-                                <p class="textPost"><?= $post->getTexte(); ?></a>
-                                    <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                                <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
+                                    <p class="textPost"><?= $post->getTexte(); ?></p>
+                                    <?php if ($post->getMedia()) : ?>
                                         <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                    </a>
+                                    <?php endif; ?>
+                                </a>
                             </div>
                             <div class="likecomment">
                                 <?php if (isset($_SESSION['user'])) { ?>
@@ -208,7 +210,7 @@ if (isset($_SESSION['user'])) {
 
                 <div class='panel'>
                     <?php foreach ($postsComments as $post) : ?>
-                        <div class="unitPanelPost">
+                        <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                             <div class="userPost">
                                 <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                     <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
@@ -220,10 +222,12 @@ if (isset($_SESSION['user'])) {
                                 <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
                             </div>
                             <div class="postContent">
-                                <p class="textPost"><?= $post->getTexte(); ?></a>
-                                    <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                                <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
+                                    <p class="textPost"><?= $post->getTexte(); ?></p>
+                                    <?php if ($post->getMedia()) : ?>
                                         <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                    </a>
+                                    <?php endif; ?>
+                                </a>
                             </div>
                             <div class="likecomment">
                                 <?php if (isset($_SESSION['user'])) { ?>
@@ -260,7 +264,7 @@ if (isset($_SESSION['user'])) {
 
                 <div class='panel'>
                     <?php foreach ($postsLikes as $post) : ?>
-                        <div class="unitPanelPost">
+                        <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                             <div class="userPost">
                                 <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                     <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
@@ -272,10 +276,12 @@ if (isset($_SESSION['user'])) {
                                 <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
                             </div>
                             <div class="postContent">
-                                <p class="textPost"><?= $post->getTexte(); ?></a>
-                                    <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                                <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
+                                    <p class="textPost"><?= $post->getTexte(); ?></p>
+                                    <?php if ($post->getMedia()) : ?>
                                         <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                    </a>
+                                    <?php endif; ?>
+                                </a>
                             </div>
                             <div class="likecomment">
                                 <?php if (isset($_SESSION['user'])) { ?>

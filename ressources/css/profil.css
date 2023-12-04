@@ -123,6 +123,15 @@ body{
     margin-bottom: 50px;
 }
 
+.clickable-post:hover {
+    cursor: pointer;
+}
+
+.post-link {
+    text-decoration: none;
+    color: black;
+}
+
 .toggle {
     font-family: arial, sans-serif;
   }
