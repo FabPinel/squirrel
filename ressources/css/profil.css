@@ -177,23 +177,23 @@ body{
     display: block;
   }
 
-.userPost{
+.userPost {
     display: flex;
     align-items: flex-start;
 }
 
-  .avatarUserPost{
+  .avatarUserPost {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 0px 10px 0px 0px;
   }
 
-  .linkAvatarUser:hover{
+  .linkAvatarUser:hover {
     opacity: 0.7;
   }
   
-.userName{
+.userName {
     font-size: 17px;
     font-weight: 500;
     color: black;
@@ -210,19 +210,24 @@ body{
     margin: 4px 0px 0px 4px;
 }
 
-.verified{
+.postTimePost {
+    color: rgb(124, 121, 121);
+    margin: 0px 0px 0px 4px;
+}
+
+.verified {
     width: 16px;
     height: 16px;
     margin: 4px 0px 0px 4px;
 }
 
-.verifiedNickname{
+.verifiedNickname {
     width: 3%;
     height: 3%;
     margin: 4px 0px 0px 4px;
 }
 
-.profilNickname{
+.profilNickname {
     display: flex;
     margin-left: -10px;
 }
@@ -386,6 +391,16 @@ body{
     margin-bottom: 8px;
 }
 
+.reponse {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    margin-right: 8px;
+}
+
 .closeButton {
     color: #000000;
     padding: 10px;
@@ -418,6 +433,31 @@ body{
   
 .editUser:hover {
     background-color: #7F5539;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+.newComment {
+    text-align: center;
+    padding: 15px 25px; 
+    background-color: #E6CCB2;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+#submitButton.active {
+    background-color: #7F5539;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#submitButton.active:hover {
+    background-color: #6c4a33;
     transition: 0.5s;
     cursor: pointer;
 }

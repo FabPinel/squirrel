@@ -1,32 +1,31 @@
 <?php
-
+require_once($_SERVER['DOCUMENT_ROOT'] . '/configbdd.php');
+require_once('Post.php');
 class Comment
 {
-    private int $kd;
+    private int $id;
     private string $content;
-    private DateTime $createdDate;
+    private string $createdDate;
     private User $user;
     private Post $post;
-    private Comment $comment;
 
-    public function __construct(int $kd, string $content, DateTime $createdDate, User $user, Post $post, Comment $comment)
+    public function __construct(int $id, string $content, string $createdDate, User $user, Post $post)
     {
-        $this->kd = $kd;
+        $this->id = $id;
         $this->content = $content;
         $this->createdDate = $createdDate;
         $this->user = $user;
         $this->post = $post;
-        $this->comment = $comment;
     }
 
-    public function getKd(): int
+    public function getId(): int
     {
-        return $this->kd;
+        return $this->id;
     }
 
-    public function setKd(int $kd): void
+    public function setId(int $id): void
     {
-        $this->kd = $kd;
+        $this->id = $id;
     }
 
     public function getContent(): string
@@ -39,12 +38,12 @@ class Comment
         $this->content = $content;
     }
 
-    public function getCreatedDate(): DateTime
+    public function getCreatedDate(): string
     {
         return $this->createdDate;
     }
 
-    public function setCreatedDate(DateTime $createdDate): void
+    public function setCreatedDate(string $createdDate): void
     {
         $this->createdDate = $createdDate;
     }
@@ -69,13 +68,79 @@ class Comment
         $this->post = $post;
     }
 
-    public function getComment(): Comment
+    public static function getCommentsByPostId($postId)
     {
-        return $this->comment;
+        global $bdd;
+
+        $query = $bdd->prepare("SELECT c.*, 
+                                u.nickname as user_nickname, 
+                                u.id as user_id, 
+                                u.lastName as user_lastName, 
+                                u.firstName as user_firstName, 
+                                u.email as user_email, 
+                                u.role as user_role, 
+                                u.picture as user_picture, 
+                                u.banner as user_banner, 
+                                u.bio as user_bio, 
+                                u.createdDate as user_createdDate, 
+                                u.birthday as user_birthday, 
+                                u.isVerify as user_isVerify,
+                                p.id as post_id,
+                                p.texte as post_texte,
+                                p.media as post_media,
+                                p.createdDate as post_createdDate
+                                FROM comments c
+                                JOIN users u ON c.user = u.id
+                                JOIN posts p ON c.post = p.id
+                                WHERE c.post = :postId
+                                ORDER BY c.createdDate DESC");
+
+        $query->execute(array('postId' => $postId));
+
+        $comments = [];
+
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User(
+                $row['user_id'],
+                $row['user_firstName'],
+                $row['user_lastName'],
+                $row['user_nickname'],
+                $row['user_email'],
+                $row['user_picture'],
+                $row['user_banner'],
+                $row['user_bio'],
+                $row['user_role'],
+                $row['user_createdDate'],
+                $row['user_birthday'],
+                $row['user_isVerify']
+            );
+
+            $post = new Post(
+                $row['post_id'],
+                $row['post_texte'],
+                $row['post_media'],
+                $user,
+                $row['post_createdDate']
+            );
+
+            $comment = new Comment(
+                $row['id'],
+                $row['content'],
+                $row['post_createdDate'],
+                $user,
+                $post
+            );
+
+            $comments[] = $comment;
+        }
+
+        return $comments;
     }
 
-    public function setComment(Comment $comment): void
+    public static function createComment($content, $idUser, $idPost)
     {
-        $this->comment = $comment;
+        global $bdd;
+        $queryComment = $bdd->prepare("INSERT INTO comments (content, user, post) VALUES (:content, :idUser, :idPost)");
+        $queryComment->execute(array('content' => $content, 'idUser' => $idUser, 'idPost' => $idPost,));
     }
 }

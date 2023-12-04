@@ -109,3 +109,17 @@ function updateLikeCount(likesCount, likeCountElement) {
     likeCountElement.text(likesCount);
     console.log("Updated Likes Count:", likesCount);
 }
+
+// Vérifier si le champ commentaire est vide
+function checkCommentText() {
+    var commentText = $('#commentText').val();
+    var submitButton = $('#submitButton');
+
+    if (commentText.trim() !== '') {
+        submitButton.prop('disabled', false);
+        submitButton.addClass('active');
+    } else {
+        submitButton.prop('disabled', true);
+        submitButton.removeClass('active');
+    }
+}
