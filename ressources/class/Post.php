@@ -266,7 +266,7 @@ class Post
                 FROM posts p
                 JOIN users u ON p.user = u.id
                 JOIN postlikes pl ON p.id = pl.post
-                WHERE c.user = :idUser
+                WHERE pl.user = :idUser
                 ORDER BY p.createdDate DESC;");
         $queryPost->execute(array('idUser' => $idUser));
 
