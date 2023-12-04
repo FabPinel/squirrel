@@ -253,7 +253,7 @@ body{
     margin-left: 0px;
 }
 
-.likePost{
+.likePost, .commentPost {
     display: flex;
     align-items: flex-start;
     margin: 14px 0px 0px 62px;
@@ -284,6 +284,10 @@ body{
 .numberLike{
     margin: 2.5px 0px 0px 4px;
     font-size: 14px;
+}
+
+.likecomment {
+    display: flex;
 }
 
 .image-link {

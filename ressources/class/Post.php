@@ -236,4 +236,16 @@ class Post
 
         return $result['total'];
     }
+
+    //Compter les commentaire d'un poste
+    public static function countCommentByPostId($idPost)
+    {
+        global $bdd;
+        $queryCountComment = $bdd->prepare("SELECT COUNT(*) as total FROM comments WHERE post=:idPost");
+        $queryCountComment->execute(array('idPost' => $idPost));
+
+        $result = $queryCountComment->fetch();
+
+        return $result['total'];
+    }
 }
