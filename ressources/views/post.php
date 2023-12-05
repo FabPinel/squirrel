@@ -31,6 +31,12 @@ if (isset($_SESSION['user'])) {
     <?php include './navbar.php' ?>
     <div class="container">
         <div class='panel'>
+            <div class="topPost">
+                <span class="material-symbols-outlined arrowBack" onclick="goBack()">
+                    arrow_back
+                </span>
+                <h2>Poster</h2>
+            </div>
             <?php foreach ($posts as $post) : ?>
                 <div class="unitPanelPost">
                     <div class="userPost">
@@ -90,7 +96,7 @@ if (isset($_SESSION['user'])) {
                                 <img src="<?= $sessionUser->getPicture(); ?>" alt="" class="avatarUserPost">
                             </a>
                             <textarea class="reponse" name="reponse" id="commentText" oninput="checkCommentText()" placeholder="Postez votre réponse"></textarea>
-                            <button type="submit" name="newComment" class="newComment" id="submitButton" disabled>Envoyer</button>
+                            <button type="submit" name="newComment" class="newComment" id="submitButton" disabled>Répondre</button>
                         </div>
                     </div>
                 </form>

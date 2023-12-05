@@ -81,7 +81,13 @@ if (isset($_SESSION['user'])) {
             </div>
             <p><?php echo $user->getBio(); ?></p>
             <div class="profilDate">
+                <span class="material-symbols-outlined" style="font-size: 22px; margin-top: 1vw; margin-right: 0.5vw;">
+                    cake
+                </span>
                 <p class="profilNaissance">Naissance le <?php echo $user->formatBirthday($user->getBirthday()); ?></p>
+                <span class="material-symbols-outlined" style="font-size: 22px; margin-top: 1vw; margin-left: 0.5vw;  margin-right: 0.3vw;">
+                    calendar_month
+                </span>
                 <p class="profilCreatedDate">A rejoint Squirrel en <?php echo $user->formatCreatedDate($user->getCreatedDate()); ?></p>
             </div>
             <a><strong><?php echo $followOfUser; ?></strong> abonnements</a>

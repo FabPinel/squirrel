@@ -137,3 +137,9 @@ $(document).ready(function () {
         }
     });
 });
+
+// Revenir sur la page précédente 
+
+function goBack() {
+    window.history.back();
+}

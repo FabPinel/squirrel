@@ -245,10 +245,6 @@ body{
     display: flex;
 }
 
-.profilCreatedDate {
-    margin-left: 20px;
-}
-
 .postContent{
     margin: -34px 0px 0px 62px;
 }
@@ -489,6 +485,25 @@ body{
 
 .title {
     margin-left: 1vw;
+}
+
+.topPost {
+    display: flex;
+    margin-left: 1vw;
+}
+
+.arrowBack {
+    margin-right: 1vw;
+    margin-top: 3%;
+    cursor: pointer;
+    border-radius: 25%;
+    transition: 0.5s;
+    height: 24px;
+}
+
+.arrowBack:hover {
+    background-color: #efefef;
+    transition: 0.5s;
 }
 
   @media only screen and (max-width: 500px) {
