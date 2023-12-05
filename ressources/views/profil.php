@@ -37,8 +37,9 @@ if (isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../css/profil.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Squirrel</title>
     <script src="/ressources/js/profil.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
+    <title>Squirrel - <?php echo $user->getNickname() ?></title>
 </head>
 
 <body>
