@@ -1,33 +1,33 @@
-const uls = document.querySelectorAll("ul");
+// const uls = document.querySelectorAll("ul");
 
-uls.forEach((ul) => {
-  const resetClass = ul.parentNode.getAttribute("class");
-  const lis = ul.querySelectorAll("li");
+// uls.forEach((ul) => {
+//   const resetClass = ul.parentNode.getAttribute("class");
+//   const lis = ul.querySelectorAll("li");
 
-  lis.forEach((li) => {
-    li.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const target = e.currentTarget;
+//   lis.forEach((li) => {
+//     li.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       e.stopPropagation();
+//       const target = e.currentTarget;
 
-      if (
-        target.classList.contains("active") ||
-        target.classList.contains("follow")
-      ) {
-        return;
-      }
+//       if (
+//         target.classList.contains("active") ||
+//         target.classList.contains("follow")
+//       ) {
+//         return;
+//       }
 
-      lis.forEach((item) => clearClass(item, "active"));
+//       lis.forEach((item) => clearClass(item, "active"));
 
-      setClass(target, "active");
-    });
-  });
-});
+//       setClass(target, "active");
+//     });
+//   });
+// });
 
-function clearClass(node, className) {
-  node.classList.remove(className);
-}
+// function clearClass(node, className) {
+//   node.classList.remove(className);
+// }
 
-function setClass(node, className) {
-  node.classList.add(className);
-}
+// function setClass(node, className) {
+//   node.classList.add(className);
+// }

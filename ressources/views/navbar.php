@@ -1,3 +1,10 @@
+<?php if (isset($_SESSION['user'])) {
+    $affich_users = $bdd->prepare('SELECT * FROM users WHERE id=?');
+    $affich_users->execute(array($_SESSION['user']));
+    $affichage = $affich_users->fetch();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,18 +25,26 @@
                 <img class="logo" src="https://image.noelshack.com/fichiers/2023/39/1/1695652660-logo-squirrel.png" alt="Logo">
             </div>
             <ul>
-                <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
-                <li><a href="#"><i class="fas fa-user"></i>Mon profil</a></li>
-                <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
-                <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li>
+                <li><a href="../../index.php"><i class="fas fa-home"></i>Accueil</a></li>
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <li><a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><i class="fas fa-user"></i>Mon profil</a></li>
+                <?php } else { ?>
+                    <li><a href="./login.php"><i class="fas fa-user"></i>Mon profil</a></li>
+                <?php } ?>
+                <!-- <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
+                <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li> -->
             </ul>
             <a href="#" class="post-button">POSTER</a>
-            <a href="#" class="login-button">Se connecter</a>
+            <?php if (!isset($_SESSION['user'])) { ?>
+                <a href="/ressources/views/login.php" class="login-button">Se connecter</a>
+            <?php } else { ?>
+                <a href="/ressources/views/logout.php" class="login-button">Se déconnecter</a>
+            <?php } ?>
         </div>
     </div>
     <!--PARTIE MOBILE-->
     <div class="mobileBar">
-        <div class="topbar">
+        <!-- <div class="topbar">
             <div class="profile-icon">
                 <a href="#profile">
                     <i class="fas fa-user"></i>
@@ -39,7 +54,7 @@
                 <img src="https://image.noelshack.com/fichiers/2023/39/1/1695652660-logo-squirrel.png" alt="Logo" />
             </div>
             <div class="empty-space"></div>
-        </div>
+        </div> -->
 
         <div class="container stage">
             <div class="tabbar tab-style3">
