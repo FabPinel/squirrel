@@ -18,7 +18,7 @@
 
     <div class="center">
         <h1>S'inscrire</h1>
-        <form action="register_controller.php" method="post" action="_URL_" enctype="multipart/form-data">
+        <form action="../controller/registerController.php" method="post" action="_URL_" enctype="multipart/form-data">
             <div class="txt_field">
                 <input type="text" required name="lastname">
                 <span></span>
@@ -35,6 +35,11 @@
                 <label>Pseudo</label>
             </div>
             <div class="txt_field">
+                <input type="date" required name="birthday">
+                <span></span>
+                <!-- <label>Date de naissance</label> -->
+            </div>
+            <div class="txt_field">
                 <input type="text" required name="email">
                 <span></span>
                 <label>Email</label>
@@ -44,7 +49,7 @@
                 <span></span>
                 <label>Mot de passe</label>
             </div>
-            <input type="submit" value="envoyer">
+            <input type="submit" value="S'inscrire">
             <div class="signup_link">
             </div>
         </form>

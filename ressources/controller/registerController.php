@@ -8,6 +8,7 @@ if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['
     $lastname = htmlspecialchars($_POST['lastname']);
     $firstname = htmlspecialchars($_POST['firstname']);
     $nickname = htmlspecialchars($_POST['nickname']);
+    $birthday = htmlspecialchars($_POST['birthday']);
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
@@ -37,15 +38,16 @@ if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['
                         // hashes du mot de passe par Bcrypt
                         $password = password_hash($password, PASSWORD_BCRYPT);
 
-                        $insert_db = $bdd->prepare('INSERT INTO users(firstName, lastName, nickname, email, password) VALUES(:firstName, :lasttName, :nickname, :email, :password)');
+                        $insert_db = $bdd->prepare('INSERT INTO users(firstName, lastName, nickname, birthday, email, password) VALUES(:firstName, :lasttName, :nickname, :birthday, :email, :password)');
                         $insert_db->execute(array(
                             'firstName' => $firstname,
                             'lasttName' => $lastname,
                             'nickname' => $nickname,
+                            'birthday' => $birthday,
                             'email' => $email,
                             'password' => $password,
                         ));
-                        header('Location:index.php');
+                        header('Location:/ ');
                     } else {
                         echo "L'email n'est pas valide";
                     }
