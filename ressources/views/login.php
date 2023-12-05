@@ -20,12 +20,7 @@ $affichage = $affich_users->fetch();
     <link rel="stylesheet" href="../css/login.css">
 </head>
 
-<body style="background: #002038;">
-
-    <a href="/index.php">
-        <button class="BtnRetour"> Retourner à la page d'accueil</button>
-    </a>
-
+<body>
     <div class="center">
         <h1>Se connecter</h1>
         <form action="../controller/loginController.php" method="post">
@@ -41,6 +36,9 @@ $affichage = $affich_users->fetch();
             </div>
             <input type="submit" value="Connexion">
         </form>
+        <a href="/index.php">
+            <button class="BtnRetour"> Retourner à la page d'accueil</button>
+        </a>
     </div>
 </body>
 

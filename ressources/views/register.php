@@ -6,16 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
-    <link rel="stylesheet" href="..\css\register.css">
+    <link rel="stylesheet" href="..\css\login.css">
     <title>S'inscrire</title>
 </head>
 
 <body>
-
-    <a href="/index.php">
-        <button class="BtnRetour"> Retourner à la page d'accueil</button>
-    </a>
-
     <div class="center">
         <h1>S'inscrire</h1>
         <form action="../controller/registerController.php" method="post" action="_URL_" enctype="multipart/form-data">
@@ -53,6 +48,9 @@
             <div class="signup_link">
             </div>
         </form>
+        <a href="/index.php">
+            <button class="BtnRetour"> Retourner à la page d'accueil</button>
+        </a>
     </div>
 </body>
 
