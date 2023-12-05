@@ -117,27 +117,6 @@ if (isset($_SESSION['user'])) {
                     <div class="postContent">
                         <p class="textPost"><?= $comment->getContent(); ?></a>
                     </div>
-                    <div class="likecomment">
-                        <?php if (isset($_SESSION['user'])) { ?>
-                            <div class="likePost <?php echo (Post::isLiked($comment->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
-                                <span class="material-icons-outlined like-button" style="font-size: 22px;">
-                                    favorite
-                                </span>
-                                <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                    <?= Post::countLikeByPostId($comment->getId()); ?>
-                                </p>
-                            </div>
-                        <?php } else { ?>
-                            <div class="likePost">
-                                <span class="material-icons-outlined" style="font-size: 22px;">
-                                    favorite
-                                </span>
-                                <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                    <?= Post::countLikeByPostId($comment->getId()); ?>
-                                </p>
-                            </div>
-                        <?php } ?>
-                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

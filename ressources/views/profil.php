@@ -45,11 +45,8 @@ if (isset($_SESSION['user'])) {
 <body>
     <?php include './navbar.php' ?>
     <div class="container">
-        <a href="/ressources/views/login.php">LOGIN</a>
-        <a href="/ressources/views/logout.php">DECO</a>
-        <a href="../../index.php">ACCUEIL</a>
-        <h1 class="profil"><?php echo $user->getNickname(); ?></h1>
-        <a class="post"><?php echo $totalPost; ?> posts</a>
+        <h1 class="profil hide"><?php echo $user->getNickname(); ?></h1>
+        <a class="post hide"><?php echo $totalPost; ?> posts</a>
         <img src="<?php echo $user->getBanner(); ?>" alt="" class="banner">
         <img src="<?php echo $user->getPicture(); ?>" alt="" class="profilPic">
         <?php if (isset($_SESSION['user'])) {
