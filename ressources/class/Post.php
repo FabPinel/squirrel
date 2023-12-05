@@ -353,23 +353,25 @@ class Post
         return $posts;
     }
 
-    //Calculer la durée du post, après 23H affichage de la date
     public static function getTimeElapsedString($createdDate)
     {
+        // Définir le fuseau horaire à "Europe/Paris"
+        date_default_timezone_set('Europe/Paris');
+
         $createdTimestamp = strtotime($createdDate);
         $currentTime = time();
         $timeDifference = $currentTime - $createdTimestamp;
 
-        if ($timeDifference < 3600) { // moins d'une heure affichage des minutes
+        if ($timeDifference < 60) { // moins d'une minute, affichage des secondes
+            return abs($timeDifference) . " sec";
+        } elseif ($timeDifference < 3600) { // moins d'une heure, affichage des minutes
             $elapsedTime = round($timeDifference / 60);
-            return "$elapsedTime min";
-        } else {
-            $elapsedTime = round($timeDifference / 3600); // moins d'un jour affichage des heures
-            if ($elapsedTime <= 23) {
-                return "$elapsedTime h";
-            } else {
-                return date('j M', $createdTimestamp); // plus d'un jour affichage de la date
-            }
+            return abs($elapsedTime) . " min";
+        } elseif ($timeDifference < 86400) { // moins d'un jour, affichage des heures
+            $elapsedTime = round($timeDifference / 3600);
+            return abs($elapsedTime) . " h";
+        } else { // plus d'un jour, affichage de la date
+            return date('j M', $createdTimestamp);
         }
     }
 

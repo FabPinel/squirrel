@@ -126,7 +126,7 @@ class Comment
             $comment = new Comment(
                 $row['id'],
                 $row['content'],
-                $row['post_createdDate'],
+                $row['createdDate'],
                 $user,
                 $post
             );
