@@ -99,8 +99,10 @@ if (isset($_SESSION['user'])) {
                 </span>
                 <p class="profilCreatedDate">A rejoint Squirrel en <?php echo $user->formatCreatedDate($user->getCreatedDate()); ?></p>
             </div>
-            <a><strong><?php echo $followOfUser; ?></strong> abonnements</a>
-            <a><strong><?php echo $followersOfUser; ?></strong> abonnés</a>
+            <a href="follow.php?user=<?= $user->getId(); ?>" class="followProfil">
+                <strong><?php echo $followOfUser; ?></strong> abonnements
+                <strong><?php echo $followersOfUser; ?></strong> abonnés
+            </a>
             <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' && !$isUserSession) { ?>
                 <div class="profilAdmin">
                     <?php if ($isCertified) { ?>

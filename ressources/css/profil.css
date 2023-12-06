@@ -128,6 +128,19 @@ body{
     margin-left: 2.5vw;
 }
 
+.followProfil {
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+
+.followProfil:hover {
+    text-decoration: underline;
+    color: #E6CCB2;
+    transition: 0.5s;
+}
+
 .clickable-post:hover {
     cursor: pointer;
 }
