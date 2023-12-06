@@ -46,7 +46,11 @@ if (isset($_SESSION['user'])) {
 <body>
     <?php include './navbar.php' ?>
     <div class="container">
-        <h1 class="profil hide"><?php echo $user->getNickname(); ?></h1>
+        <div class="profilTop"> <span class="material-symbols-outlined arrowBackProfil" onclick="goBack()">
+                arrow_back
+            </span>
+            <h1 class="profil hide"><?php echo $user->getNickname(); ?></h1>
+        </div>
         <a class="post hide"><?php echo $totalPost; ?> posts</a>
         <img src="<?php echo $user->getBanner(); ?>" alt="" class="banner">
         <img src="<?php echo $user->getPicture(); ?>" alt="" class="profilPic">
