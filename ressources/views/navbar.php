@@ -31,7 +31,7 @@
                 <?php } else { ?>
                     <li><a href="/ressources/views/login.php"><i class="fas fa-user"></i>Mon profil</a></li>
                 <?php } ?>
-                <li><a href="#"><i class="fas fa-search"></i>Explorer</a></li>
+                <li><a href="/ressources/views/explorer.php"><i class="fas fa-search"></i>Explorer</a></li>
                 <!-- <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li> -->
             </ul>
             <a href="#" class="post-button">POSTER</a>
@@ -72,7 +72,7 @@
                         </li>
                     <?php } ?>
                     <li class="products" data-where="recherche">
-                        <span class="material-icons-outlined">search</span>
+                        <a href="/ressources/views/explorer.php"><span class="material-icons-outlined">search</span></a>
                     </li>
                     <li class="products" data-where="add">
                         <span class="material-icons-outlined">maps_ugc</span>

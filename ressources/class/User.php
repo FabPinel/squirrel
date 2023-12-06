@@ -221,6 +221,36 @@ class User
         return null;
     }
 
+    public static function getAllUsers()
+    {
+        global $bdd;
+
+        $query = $bdd->prepare("SELECT * FROM users");
+        $query->execute();
+
+        $users = [];
+
+        while ($user = $query->fetch(PDO::FETCH_ASSOC)) {
+            $users[] = new User(
+                $user['id'],
+                $user['firstName'],
+                $user['lastName'],
+                $user['nickname'],
+                $user['email'],
+                $user['picture'],
+                $user['banner'],
+                $user['bio'],
+                $user['role'],
+                $user['createdDate'],
+                $user['birthday'],
+                $user['isVerify']
+            );
+        }
+
+        return $users;
+    }
+
+
     //Formater la date d'anniversaire
     public static function formatBirthday($birthday)
     {
