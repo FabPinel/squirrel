@@ -25,6 +25,7 @@ if (isset($_SESSION['user'])) {
     $isFollow = User::getFollow($sessionUser->getId(), $id_user);
     $isCertified = User::getCertif($id_user);
     $isBanned = User::getBan($id_user);
+    $isFollower = User::isFollower($sessionUser->getId(), $id_user);
 }
 
 ?>
@@ -59,14 +60,20 @@ if (isset($_SESSION['user'])) {
                         <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
                         <button class="isFollow" name="follow">Suivi ✔</button>
                     </form>
-                <?php } else { ?>
+                <?php } else if ($isFollower) { ?>
+                    <form action="../controller/profilController.php" method="post">
+                        <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
+                        <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
+                        <button class="follow" name="follow">Suivre en retour</button>
+                    </form>
+                <?php
+                } else { ?>
                     <form action="../controller/profilController.php" method="post">
                         <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
                         <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
                         <button class="follow" name="follow">Suivre</button>
                     </form>
-        <?php
-                }
+        <?php }
             }
         }
         ?>

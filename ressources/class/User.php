@@ -538,4 +538,19 @@ class User
             return 0;
         }
     }
+
+    public static function isFollower($sessionUser, $idUser)
+    {
+        global $bdd;
+        $queryCountFollowers = $bdd->prepare("SELECT * FROM followers WHERE user=:idUser AND follower=:sessionUser");
+        $queryCountFollowers->execute(array('sessionUser' => $sessionUser, 'idUser' => $idUser));
+
+        $result = $queryCountFollowers->fetch();
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
