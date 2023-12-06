@@ -29,7 +29,7 @@
                 <?php if (isset($_SESSION['user'])) { ?>
                     <li><a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><i class="fas fa-user"></i>Mon profil</a></li>
                 <?php } else { ?>
-                    <li><a href="./login.php"><i class="fas fa-user"></i>Mon profil</a></li>
+                    <li><a href="/ressources/views/login.php"><i class="fas fa-user"></i>Mon profil</a></li>
                 <?php } ?>
                 <!-- <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
                 <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li> -->
