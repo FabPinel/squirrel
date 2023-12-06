@@ -25,14 +25,14 @@
                 <img class="logo" src="https://image.noelshack.com/fichiers/2023/39/1/1695652660-logo-squirrel.png" alt="Logo">
             </div>
             <ul>
-                <li><a href="../../index.php"><i class="fas fa-home"></i>Accueil</a></li>
+                <li><a href="../../"><i class="fas fa-home"></i>Accueil</a></li>
                 <?php if (isset($_SESSION['user'])) { ?>
                     <li><a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><i class="fas fa-user"></i>Mon profil</a></li>
                 <?php } else { ?>
                     <li><a href="/ressources/views/login.php"><i class="fas fa-user"></i>Mon profil</a></li>
                 <?php } ?>
-                <!-- <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
-                <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li> -->
+                <li><a href="#"><i class="fas fa-search"></i>Explorer</a></li>
+                <!-- <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li> -->
             </ul>
             <a href="#" class="post-button">POSTER</a>
             <?php if (!isset($_SESSION['user'])) { ?>
@@ -60,16 +60,22 @@
             <div class="tabbar tab-style3">
                 <ul class="flex-center">
                     <li class="home active" data-where="accueil">
-                        <span class="material-icons-outlined">home</span>
+                        <a href="../../"><span class="material-icons-outlined">home</span></a>
                     </li>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <li class="services" data-where="profil">
+                            <a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><span class="material-icons-outlined">person</span></a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="services" data-where="profil">
+                            <a href="/ressources/views/login.php"><span class="material-icons-outlined">person</span></a>
+                        </li>
+                    <?php } ?>
                     <li class="products" data-where="recherche">
                         <span class="material-icons-outlined">search</span>
                     </li>
-                    <li class="services" data-where="notifications">
-                        <span class="material-icons-outlined">notifications</span>
-                    </li>
-                    <li class="help" data-where="parametres">
-                        <span class="material-icons-outlined">settings</span>
+                    <li class="products" data-where="add">
+                        <span class="material-icons-outlined">maps_ugc</span>
                     </li>
                 </ul>
             </div>

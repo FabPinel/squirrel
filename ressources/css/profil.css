@@ -125,6 +125,7 @@ body{
     font-size: 1em;
     padding-left: 10px;
     margin-bottom: 50px;
+    margin-left: 2.5vw;
 }
 
 .clickable-post:hover {
