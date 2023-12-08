@@ -35,3 +35,14 @@ if (isset($_POST['deletePost'])) {
     header('Location: ' . $_SESSION['current_page']);
     exit;
 }
+
+if (isset($_POST['newPost'])) {
+    $texte = $_POST['texte'];
+    $media = $_POST['media'];
+    $user = $_POST['id_user'];
+
+    Post::createPost($texte, $media, $user);
+
+    header('Location: ' . $_SESSION['current_page']);
+    exit;
+}

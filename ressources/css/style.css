@@ -101,6 +101,7 @@ body{
 .postTime{
     color: rgb(124, 121, 121);
     margin: 4px 0px 0px 4px;
+    font-size: 16px;
 }
 
 .verified{

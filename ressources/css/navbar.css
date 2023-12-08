@@ -60,19 +60,18 @@ body {
   
   
   .login-button {
-      display: flex;
-      width: 140px;
-      justify-content: center;
-      text-align: center;
-      padding: 15px;
-      background-color: #E6CCB2;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 15px;
-      margin: 300px 0px 0px 40px;
-  }
+    width: 140px;
+    text-align: center;
+    padding: 15px;
+    background-color: #E6CCB2;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    margin: auto auto 15px auto;
+}
+
   
   
     .login-button:hover {
