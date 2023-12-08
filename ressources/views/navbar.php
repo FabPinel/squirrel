@@ -60,22 +60,22 @@
             <div class="tabbar tab-style3">
                 <ul class="flex-center">
                     <li class="home active" data-where="accueil">
-                        <a href="../../"><span class="material-icons-outlined">home</span></a>
+                        <a href="../../"><span class="material-icons-outlined icons-nav-mobile">home</span></a>
                     </li>
                     <?php if (isset($_SESSION['user'])) { ?>
                         <li class="services" data-where="profil">
-                            <a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><span class="material-icons-outlined">person</span></a>
+                            <a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><span class="material-icons-outlined icons-nav-mobile">person</span></a>
                         </li>
                     <?php } else { ?>
                         <li class="services" data-where="profil">
-                            <a href="/ressources/views/login.php"><span class="material-icons-outlined">person</span></a>
+                            <a href="/ressources/views/login.php"><span class="material-icons-outlined icons-nav-mobile">person</span></a>
                         </li>
                     <?php } ?>
                     <li class="products" data-where="recherche">
-                        <a href="/ressources/views/explorer.php"><span class="material-icons-outlined">search</span></a>
+                        <a href="/ressources/views/explorer.php"><span class="material-icons-outlined icons-nav-mobile">search</span></a>
                     </li>
                     <li class="products" data-where="add">
-                        <span class="material-icons-outlined">maps_ugc</span>
+                        <span class="material-icons-outlined icons-nav-mobile">maps_ugc</span>
                     </li>
                 </ul>
             </div>

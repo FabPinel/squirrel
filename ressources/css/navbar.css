@@ -115,14 +115,6 @@ body {
   }
 
 
-  topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff; /* Couleur de fond de la topbar */
-    padding: 10px;
-  }
-  
   .profile-icon {
     padding: 5px;
     color: #7F5539;
@@ -158,6 +150,7 @@ body {
     text-align: center;
     padding: 15px 0;
     cursor: pointer;
+    list-style: none;
   }
   
   .tabbar li.active {
@@ -189,7 +182,7 @@ body {
     }
     
     
-  .material-icons-outlined {
+  .icons-nav-mobile {
     font-size: 24px;
     color: white;
   }

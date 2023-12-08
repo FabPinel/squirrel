@@ -1,5 +1,5 @@
 <?php
-require('../../configbdd.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/configbdd.php');
 class User
 {
     private int $id;
