@@ -49,16 +49,19 @@ if (isset($_SESSION['user'])) {
                             <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                         <?php } ?>
                         <p class="postTimePost"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
-                        <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
-                            <form action="../controller/postController.php" method="post">
-                                <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
-                                <button class="deleteComment" name="deletePost">
-                                    <span class="material-symbols-outlined">
-                                        cancel
-                                    </span>
-                                </button>
-                            </form>
-                        <?php } ?>
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                            if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                <form action="../controller/postController.php" method="post">
+                                    <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                    <button class="deleteComment" name="deletePost">
+                                        <span class="material-symbols-outlined">
+                                            cancel
+                                        </span>
+                                    </button>
+                                </form>
+                        <?php }
+                        } ?>
                     </div>
                     <div class="postContent">
                         <p class="textPost"><?= $post->getTexte(); ?></a>

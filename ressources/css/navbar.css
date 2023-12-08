@@ -193,6 +193,9 @@ body {
       margin-left: 30px;
     }
   
+    ul li:hover a {
+      padding-left: 0px;
+    }
   
     
 }
