@@ -440,4 +440,12 @@ class Post
 
         return $result['total'];
     }
+
+    // Supression d'un post
+    public static function deletePost($idPost)
+    {
+        global $bdd;
+        $queryComment = $bdd->prepare("DELETE FROM posts WHERE id =:idPost");
+        $queryComment->execute(array('idPost' => $idPost));
+    }
 }

@@ -25,3 +25,13 @@ if (isset($_POST['deleteComment'])) {
     header('Location: ' . $_SESSION['current_page']);
     exit;
 }
+
+//Supressions d'un post
+if (isset($_POST['deletePost'])) {
+    $idPost = $_POST['idPost'];
+
+    Post::deletePost($idPost);
+
+    header('Location: ' . $_SESSION['current_page']);
+    exit;
+}

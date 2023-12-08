@@ -183,6 +183,16 @@ if (isset($_SESSION['user'])) {
                                     <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                 <?php } ?>
                                 <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                                <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                    <form action="../controller/postController.php" method="post">
+                                        <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                        <button class="deleteComment" name="deletePost">
+                                            <span class="material-symbols-outlined">
+                                                cancel
+                                            </span>
+                                        </button>
+                                    </form>
+                                <?php } ?>
                             </div>
                             <div class="postContent">
                                 <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
@@ -237,6 +247,16 @@ if (isset($_SESSION['user'])) {
                                     <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                 <?php } ?>
                                 <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                                <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                    <form action="../controller/postController.php" method="post">
+                                        <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                        <button class="deleteComment" name="deletePost">
+                                            <span class="material-symbols-outlined">
+                                                cancel
+                                            </span>
+                                        </button>
+                                    </form>
+                                <?php } ?>
                             </div>
                             <div class="postContent">
                                 <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
@@ -291,6 +311,16 @@ if (isset($_SESSION['user'])) {
                                     <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                 <?php } ?>
                                 <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                                <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                    <form action="../controller/postController.php" method="post">
+                                        <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                        <button class="deleteComment" name="deletePost">
+                                            <span class="material-symbols-outlined">
+                                                cancel
+                                            </span>
+                                        </button>
+                                    </form>
+                                <?php } ?>
                             </div>
                             <div class="postContent">
                                 <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
