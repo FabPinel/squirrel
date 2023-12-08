@@ -473,6 +473,23 @@ body{
     transition: 0.5s;
 }
 
+.deleteComment {
+    background: none;
+    margin-left: 1vw;
+    border: none;
+}
+
+.deleteComment span {
+    color: rgb(194, 194, 194);
+    transition: 0.5s;
+}
+
+.deleteComment span:hover {
+    color: #6c4a33;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 #submitButton.active {
     background-color: #7F5539;
     transition: 0.5s;

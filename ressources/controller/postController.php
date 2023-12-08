@@ -15,3 +15,13 @@ if (isset($_POST['newComment'])) {
     header('Location: ' . $_SESSION['current_page']);
     exit;
 }
+
+//Supressions d'un commentaire
+if (isset($_POST['deleteComment'])) {
+    $idComment = $_POST['idComment'];
+
+    Comment::deleteComment($idComment);
+
+    header('Location: ' . $_SESSION['current_page']);
+    exit;
+}

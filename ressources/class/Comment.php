@@ -141,6 +141,13 @@ class Comment
     {
         global $bdd;
         $queryComment = $bdd->prepare("INSERT INTO comments (content, user, post) VALUES (:content, :idUser, :idPost)");
-        $queryComment->execute(array('content' => $content, 'idUser' => $idUser, 'idPost' => $idPost,));
+        $queryComment->execute(array('content' => $content, 'idUser' => $idUser, 'idPost' => $idPost));
+    }
+
+    public static function deleteComment($idComment)
+    {
+        global $bdd;
+        $queryComment = $bdd->prepare("DELETE FROM comments WHERE id =:idComment");
+        $queryComment->execute(array('idComment' => $idComment));
     }
 }
