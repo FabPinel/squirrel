@@ -9,6 +9,14 @@ $id_user = $_GET['user'];
 $user = User::getUserById($id_user);
 $follows = Follow::getAllFollows($id_user);
 $followers = Follow::getAllFollowers($id_user);
+$isUserSession = false;
+
+if (isset($_SESSION['user'])) {
+    $sessionUser = User::getSessionUser($bdd);
+    if ($id_user == $sessionUser->getId()) {
+        $isUserSession = true;
+    }
+}
 
 
 ?>
@@ -41,41 +49,59 @@ $followers = Follow::getAllFollowers($id_user);
             </div>
             <div class='panels'>
                 <div class='panel'>
-                    <?php foreach ($followers as $follower) : ?>
-                        <div class="unitPanelPost">
-                            <div class="userPost">
-                                <a href="profil.php?user=<?= $follower->getUser()->getId(); ?>" class="linkAvatarUser">
-                                    <img src="<?= $follower->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
-                                </a>
-                                <a href="profil.php?user=<?= $follower->getUser()->getId(); ?>" class="userName"><?= $follower->getUser()->getNickname(); ?></a>
-                                <?php if (User::getCertif($follower->getUser()->getId())) { ?>
-                                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                                <?php } ?>
+                    <?php if (empty($followers)) {
+                        if ($isUserSession) { ?>
+                            <h2 class="emptyPost">Vous n'avez pas d'abonné.</h2>
+                        <?php } else { ?>
+                            <h2 class="emptyPost"><?php echo $user->getNickname(); ?> n'a pas d'abonné.</h2>
+                        <?php }
+                    } else { ?>
+                        <?php foreach ($followers as $follower) : ?>
+                            <div class="unitPanelPost">
+                                <div class="userPost">
+                                    <a href="profil.php?user=<?= $follower->getUser()->getId(); ?>" class="linkAvatarUser">
+                                        <img src="<?= $follower->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                    </a>
+                                    <a href="profil.php?user=<?= $follower->getUser()->getId(); ?>" class="userName"><?= $follower->getUser()->getNickname(); ?></a>
+                                    <?php if (User::getCertif($follower->getUser()->getId())) { ?>
+                                        <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                                    <?php } ?>
+                                </div>
+                                <div class="postContent">
+                                    <p class="textPost"><?= $follower->getUser()->getBio(); ?></a>
+                                </div>
                             </div>
-                            <div class="postContent">
-                                <p class="textPost"><?= $follower->getUser()->getBio(); ?></a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    }
+                    ?>
                 </div>
 
                 <div class='panel'>
-                    <?php foreach ($follows as $follow) : ?>
-                        <div class="unitPanelPost">
-                            <div class="userPost">
-                                <a href="profil.php?user=<?= $follow->getUser()->getId(); ?>" class="linkAvatarUser">
-                                    <img src="<?= $follow->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
-                                </a>
-                                <a href="profil.php?user=<?= $follow->getUser()->getId(); ?>" class="userName"><?= $follow->getUser()->getNickname(); ?></a>
-                                <?php if (User::getCertif($follow->getUser()->getId())) { ?>
-                                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                                <?php } ?>
+                    <?php if (empty($follows)) {
+                        if ($isUserSession) { ?>
+                            <h2 class="emptyPost">Vous n'avez pas d'abonnemment.</h2>
+                        <?php } else { ?>
+                            <h2 class="emptyPost"><?php echo $user->getNickname(); ?> n'a pas d'abonnement.</h2>
+                        <?php }
+                    } else { ?>
+                        <?php foreach ($follows as $follow) : ?>
+                            <div class="unitPanelPost">
+                                <div class="userPost">
+                                    <a href="profil.php?user=<?= $follow->getUser()->getId(); ?>" class="linkAvatarUser">
+                                        <img src="<?= $follow->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                    </a>
+                                    <a href="profil.php?user=<?= $follow->getUser()->getId(); ?>" class="userName"><?= $follow->getUser()->getNickname(); ?></a>
+                                    <?php if (User::getCertif($follow->getUser()->getId())) { ?>
+                                        <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                                    <?php } ?>
+                                </div>
+                                <div class="postContent">
+                                    <p class="textPost"><?= $follow->getUser()->getBio(); ?></a>
+                                </div>
                             </div>
-                            <div class="postContent">
-                                <p class="textPost"><?= $follow->getUser()->getBio(); ?></a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    }
+                    ?>
                 </div>
             </div>
         </div>
