@@ -574,11 +574,9 @@ text-align: center;
 }
 
 .ancre {
-    margin-right: 1vw;
-    margin-top: 1%;
     cursor: pointer;
     border-radius: 25%;
-    transition: 0.5s;
+    transition: 0.3s;
     height: 2vw;
     width: 2vw;
     background-color: #E6CCB2;
@@ -587,13 +585,18 @@ text-align: center;
     align-items: center;
     position: fixed;
     right: 2vw;
+    bottom: -2vw;
+}
+
+.ancre.visible {
     bottom: 3vw;
 }
 
 .ancre:hover {
     background-color: #c0a589;
-    transition: 0.5s;
+    transition: 0.3s;
 }
+
 
   @media only screen and (max-width: 500px) {
     body {
