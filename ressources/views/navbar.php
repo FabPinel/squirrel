@@ -36,9 +36,9 @@ $current_page = $_SESSION['current_page'] = basename($_SERVER['REQUEST_URI']);
             </ul>
             <a href="#" class="post-button">POSTER</a>
             <?php if (!isset($_SESSION['user'])) { ?>
-                <a href="/ressources/views/login.php" class="login-button">Se connecter</a>
+                <a href="/ressources/views/login.php" class="login-button">SE CONNECTER</a>
             <?php } else { ?>
-                <a href="/ressources/views/logout.php" class="login-button">Se déconnecter</a>
+                <a href="/ressources/views/logout.php" class="login-button">SE DÉCONNECTER</a>
             <?php } ?>
         </div>
     </div>
