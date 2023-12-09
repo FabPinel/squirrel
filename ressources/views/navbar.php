@@ -35,7 +35,18 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                 <?php } ?>
                 <li><a href="/ressources/views/explorer.php"><i class="fas fa-search"></i>Explorer</a></li>
             </ul>
-            <a href="#" class="post-button">POSTER</a>
+            <?php
+            if (isset($_SESSION['user'])) {
+            ?>
+                <a href="#" class="post-button show-modal">POSTER</a>
+            <?php
+            } else {
+            ?>
+                <a href="/ressources/views/login.php" class="post-button">POSTER</a>
+            <?php
+            }
+            ?>
+
             <?php if (!isset($_SESSION['user'])) { ?>
                 <a href="/ressources/views/login.php" class="login-button">SE CONNECTER</a>
             <?php } else { ?>

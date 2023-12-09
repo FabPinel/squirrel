@@ -46,21 +46,21 @@ if (isset($_SESSION['user'])) {
             <div class='panels'>
 
                 <div class='panel'>
-                    <button class="show-modal">SHOW MODAL 1</button>
 
                     <div class="modal hidden">
                         <button class="close-modal">&times;</button>
                         <form action="/ressources/controller/postController.php" method="post" class="form-add-post">
                             <?php if (isset($_SESSION['user'])) { ?>
                                 <input type="hidden" value="<?php echo $sessionUser->getId(); ?>" name="id_user" />
+
+
+                                <div class="modal-post">
+                                    <img src="<?php echo $sessionUser->getPicture() ?>" alt="">
+                                    <input type="text" name="texte" placeholder="J'adore quand..." />
+                                </div>
                             <?php
                             }
                             ?>
-
-                            <div class="modal-post">
-                                <img src="https://cdn.discordapp.com/attachments/893102098953166949/893102250690494545/IMG_20210930_134435.jpg" alt="">
-                                <input type="text" name="texte" placeholder="J'adore quand..." />
-                            </div>
                             <input type="file" name="media" />
                             <div class="divide-form"></div>
                             <button type="submit" class="submit-modal-post" name="newPost">poster</button>
