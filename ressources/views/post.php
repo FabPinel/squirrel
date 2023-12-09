@@ -8,6 +8,7 @@ $id_post = $_GET['post'];
 
 $posts = Post::getPostByPostId($id_post);
 $comments = Comment::getCommentsByPostId($id_post);
+$sessionUser = false;
 
 if (isset($_SESSION['user'])) {
     $sessionUser = User::getSessionUser($bdd);
@@ -126,16 +127,18 @@ if (isset($_SESSION['user'])) {
                             <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                         <?php } ?>
                         <p class="postTimePost"><?= Post::getTimeElapsedString($comment->getCreatedDate()); ?></p>
-                        <?php if (isset($_SESSION['user']) && $sessionUser->getRole() == 'Admin' || $comment->getUser()->getId() == $sessionUser->getId()) { ?>
-                            <form action="../controller/postController.php" method="post">
-                                <input type="hidden" name="idComment" value="<?php echo $comment->getId(); ?>">
-                                <button class="deleteComment" name="deleteComment">
-                                    <span class="material-symbols-outlined">
-                                        cancel
-                                    </span>
-                                </button>
-                            </form>
-                        <?php } ?>
+                        <?php if (isset($_SESSION['user'])) {
+                            if ($sessionUser->getRole() == 'Admin' || $comment->getUser()->getId() == $sessionUser->getId()) { ?>
+                                <form action="../controller/postController.php" method="post">
+                                    <input type="hidden" name="idComment" value="<?php echo $comment->getId(); ?>">
+                                    <button class="deleteComment" name="deleteComment">
+                                        <span class="material-symbols-outlined">
+                                            cancel
+                                        </span>
+                                    </button>
+                                </form>
+                        <?php }
+                        } ?>
                     </div>
                     <div class="postContent">
                         <p class="textPost"><?= $comment->getContent(); ?></a>
