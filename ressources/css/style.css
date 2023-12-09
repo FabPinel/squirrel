@@ -88,7 +88,7 @@ body{
   
 .userName{
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 800;
     color: black;
     font-family: 'Poppins', sans-serif;
     text-decoration-line: none;
@@ -650,6 +650,13 @@ padding: 10px 20px;
 .suggestions-unitPanelPost {
   max-height: 100%;
   padding: 18px 10px 18px 10px;
+  transition: 0.5s;
+}
+
+.suggestions-unitPanelPost:hover {
+  background-color: rgb(239, 234, 234);
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 .suggestions-userPost {
