@@ -83,27 +83,28 @@ $(document).on('click', '.like-button', function () {
     console.log("postId:", postId);
     console.log("userId:", userId);
 
+
     $.ajax({
-        url: '../controller/profilController.php',
+        url: window.location.origin + '/ressources/controller/profilController.php',
         method: 'POST',
         data: { postId: postId, userId: userId, action: 'toggleLike' },
         success: function (response) {
             var jsonResponse = JSON.parse(response);
             console.log("AJAX Response:", jsonResponse);
             console.log("Likes Count:", jsonResponse.likesCount);
-
+    
             likeButton.css('color', jsonResponse.isLiked ? 'red' : 'black');
-
+    
             // Ajoutez ou supprimez la classe 'like-active' en fonction de l'état du like
             likePost.toggleClass('like-active', jsonResponse.isLiked);
-
+    
             updateLikeCount(jsonResponse.likesCount, likeCountElement);
         },
-
         error: function () {
             console.log('Erreur lors de la requête AJAX');
         }
     });
+    
 });
 
 // Fonction de rappel pour mettre à jour le nombre de likes

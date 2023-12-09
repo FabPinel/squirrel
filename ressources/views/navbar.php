@@ -21,6 +21,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
 <body>
     <?php include 'ancre.php' ?>
     <!--PARTIE DESKTOP-->
+
     <div class="desktopBar">
         <div class="sidebar">
             <div class="sidebar-top-logo">
@@ -38,7 +39,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
             <?php
             if (isset($_SESSION['user'])) {
             ?>
-                <a href="#" class="post-button show-modal">POSTER</a>
+                <button class="post-button show-modal">POSTER</button>
             <?php
             } else {
             ?>

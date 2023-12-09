@@ -44,8 +44,14 @@ if (isset($_SESSION['user'])) {
 </head>
 
 <body>
+
+
     <?php include './navbar.php' ?>
     <div class="container">
+
+        <?php include './modal-post.php' ?>
+        <div class="overlay hidden"></div>
+
         <div class="profilTop"> <span class="material-symbols-outlined arrowBackProfil" onclick="goBack()">
                 arrow_back
             </span>
@@ -399,6 +405,8 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
+    <script src="/ressources/js/index.js"></script>
+
 </body>
 
 </html>

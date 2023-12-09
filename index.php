@@ -30,6 +30,7 @@ if (isset($_SESSION['user'])) {
     <?php include './ressources/views/navbar.php' ?>
 
     <div class="container">
+        <?php include './ressources/views/modal-post.php' ?>
 
         <h1 class="accueil">Accueil</h1>
         <div class='toggle'>
@@ -46,26 +47,6 @@ if (isset($_SESSION['user'])) {
             <div class='panels'>
 
                 <div class='panel'>
-
-                    <div class="modal hidden">
-                        <button class="close-modal">&times;</button>
-                        <form action="/ressources/controller/postController.php" method="post" class="form-add-post">
-                            <?php if (isset($_SESSION['user'])) { ?>
-                                <input type="hidden" value="<?php echo $sessionUser->getId(); ?>" name="id_user" />
-
-
-                                <div class="modal-post">
-                                    <img src="<?php echo $sessionUser->getPicture() ?>" alt="">
-                                    <input type="text" name="texte" placeholder="J'adore quand..." />
-                                </div>
-                            <?php
-                            }
-                            ?>
-                            <input type="file" name="media" />
-                            <div class="divide-form"></div>
-                            <button type="submit" class="submit-modal-post" name="newPost">poster</button>
-                        </form>
-                    </div>
                     <div class="overlay hidden"></div>
                     <?php foreach ($posts as $post) : ?>
                         <div class="unitPanelPost">
@@ -211,13 +192,11 @@ if (isset($_SESSION['user'])) {
 
             </div>
         </div>
-
-        <script src="/ressources/js/index.js">
-
         </script>
 
 
     </div>
+    <script src="/ressources/js/index.js"></script>
 
 </body>
 
