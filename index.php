@@ -199,28 +199,30 @@ $users = User::getAllUsers();
 
 
         </div>
-        <div class="suggestions">
-            <h2>Suggestions</h2>
-            <?php foreach ($suggestUsers as $user) : ?>
-                <div class="suggestions-unitPanelPost">
-                    <div class="suggestions-userPost">
-                        <a href="profil.php?user=<?= $user->getId(); ?>" class="linkAvatarUser">
-                            <img src="<?= $user->getPicture(); ?>" alt="" class="avatarUserPost">
-                        </a>
-                        <a href="profil.php?user=<?= $user->getId(); ?>" class="userName"><?= $user->getNickname(); ?></a>
-                        <?php if (User::getCertif($user->getId())) { ?>
-                            <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                        <?php } ?>
-                        <form action="../controller/profilController.php" method="post" class="suggestion-form">
-                            <input type="hidden" name="sessionUser" value="">
-                            <input type="hidden" name="userProfil" value="">
-                            <button class="follow-suggestion" name="follow">Suivre</button>
-                        </form>
-                    </div>
+        <?php if (isset($_SESSION['user'])) { ?>
+            <div class="suggestions">
+                <h2>Suggestions</h2>
+                <?php foreach ($suggestUsers as $user) : ?>
+                    <div class="suggestions-unitPanelPost">
+                        <div class="suggestions-userPost">
+                            <a href="profil.php?user=<?= $user->getId(); ?>" class="linkAvatarUser">
+                                <img src="<?= $user->getPicture(); ?>" alt="" class="avatarUserPost">
+                            </a>
+                            <a href="profil.php?user=<?= $user->getId(); ?>" class="userName"><?= $user->getNickname(); ?></a>
+                            <?php if (User::getCertif($user->getId())) { ?>
+                                <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                            <?php } ?>
+                            <form action="../controller/profilController.php" method="post" class="suggestion-form">
+                                <input type="hidden" name="sessionUser" value="">
+                                <input type="hidden" name="userProfil" value="">
+                                <button class="follow-suggestion" name="follow">Suivre</button>
+                            </form>
+                        </div>
 
-                </div>
-            <?php endforeach; ?>
-        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php } ?>
     </div>
     <script src="/ressources/js/index.js"></script>
 

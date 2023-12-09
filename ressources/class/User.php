@@ -590,8 +590,7 @@ class User
         global $bdd;
         $limit = 3;
 
-        $query = $bdd->prepare("SELECT * FROM users WHERE id <> :userId ORDER BY RAND() LIMIT :limit");
-        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $query = $bdd->prepare("SELECT * FROM users WHERE id <> :userId ORDER BY RAND()");
         $query->bindParam(':userId', $userId, PDO::PARAM_INT);
         $query->execute();
 
@@ -619,6 +618,11 @@ class User
             // Ajouter l'utilisateur à la liste seulement s'il n'est pas déjà suivi
             if (!$isFollowing) {
                 $users[] = $userObj;
+            }
+
+            // Si nous avons déjà atteint la limite de 3 utilisateurs, sortir de la boucle
+            if (count($users) >= $limit) {
+                break;
             }
         }
 

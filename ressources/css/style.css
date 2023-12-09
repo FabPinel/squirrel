@@ -603,35 +603,12 @@ padding: 10px 20px;
   display: flex;
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1439px)  {
-  .suggestions  {
-    margin-left: 6%;
-  }
-}
-
-@media screen and (min-width: 1440px) and (max-width: 1600px) {
-  .suggestions  {
-    margin-left: 10%;
-  }
-}
-
-@media screen and (max-width: 1200px)  {
-  .suggestions  {
-    margin-left: 4%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .suggestions {
-    display: none;
-  }
-}
-
 .suggestions {
-  margin-left: 12.3%;
+  position: fixed;
+  margin-left: 71.3%;
   margin-top: 1%;
-  width: 20%;
-  height: fit-content;
+  width: 20vw;
+  height: 20vw;
   background-color: rgb(245 245 245);
   border-radius: 8px;
   padding: 0px 5px;
@@ -639,6 +616,12 @@ padding: 10px 20px;
 
 .suggestion-item {
   display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .suggestions {
+    display: none;
+  }
 }
 
 
