@@ -598,3 +598,54 @@ padding: 10px 20px;
 .aboIndex {
   text-align: center;
 }
+
+.flux-suggestion {
+  display: flex;
+}
+
+.suggestions {
+  margin-left: 10%;
+  margin-top: 1%;
+  width: 20%;
+  height: fit-content;
+  background-color: rgb(245 245 245);
+  border-radius: 8px;
+  padding: 0px 5px;
+}
+
+.suggestion-item {
+  display: flex;
+}
+
+
+.follow-suggestion {
+  border-radius: 40px;
+  border: 1px solid rgb(205, 203, 203);
+  padding: 10px 20px;
+  background: rgb(255, 255, 255);
+  font-size: 2em;
+  height: 10%;
+  font-size: 1em;
+  background-color: #E6CCB2;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.follow-suggestion:hover {
+  background-color: #7F5539;
+}
+
+.suggestion-form {
+  display: block;
+  margin-left: auto; 
+}
+
+.suggestions-unitPanelPost {
+  max-height: 100%;
+  padding: 18px 10px 18px 10px;
+}
+
+.suggestions-userPost {
+  display: flex;
+  align-items: center;
+}
