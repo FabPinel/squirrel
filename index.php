@@ -73,7 +73,7 @@ if (isset($_SESSION['user'])) {
                                 <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                     <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
                                 </a>
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
+                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                 <?php if (User::getCertif($post->getUser()->getId())) { ?>
                                     <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                 <?php } ?>
@@ -149,7 +149,7 @@ if (isset($_SESSION['user'])) {
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                         <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
                                     </a>
-                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                     <?php if (User::getCertif($post->getUser()->getId())) { ?>
                                         <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                     <?php } ?>

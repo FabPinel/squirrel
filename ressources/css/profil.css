@@ -237,13 +237,13 @@ text-align: center;
 }
 
 .userPost .postTime{
-    color: rgb(124, 121, 121);
+    color: rgb(57, 57, 57);
     margin: 4px 0px 0px 4px;
     font-size: 16px;
 }
 
 .postTimePost {
-    color: rgb(124, 121, 121);
+    color: rgb(57, 57, 57);
     margin: 0px 0px 0px 4px;
 }
 
