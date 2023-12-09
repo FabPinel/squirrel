@@ -573,6 +573,28 @@ text-align: center;
     transition: 0.5s;
 }
 
+.ancre {
+    margin-right: 1vw;
+    margin-top: 1%;
+    cursor: pointer;
+    border-radius: 25%;
+    transition: 0.5s;
+    height: 2vw;
+    width: 2vw;
+    background-color: #E6CCB2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 2vw;
+    bottom: 3vw;
+}
+
+.ancre:hover {
+    background-color: #c0a589;
+    transition: 0.5s;
+}
+
   @media only screen and (max-width: 500px) {
     body {
         margin: 0;
