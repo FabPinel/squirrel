@@ -1,13 +1,21 @@
 <script>
     window.addEventListener('scroll', function() {
         var scrollPosition = window.scrollY;
+        var ancre = document.querySelector('.ancre');
 
         // Ajouter la classe "visible" lorsque la position de défilement dépasse 200 pixels
         if (scrollPosition > 200) {
-            document.querySelector('.ancre').classList.add('visible');
+            ancre.classList.add('visible');
         } else {
             // Retirer la classe "visible" si la position de défilement est inférieure à 200 pixels
-            document.querySelector('.ancre').classList.remove('visible');
+            ancre.classList.remove('visible');
+        }
+
+        // Appliquer des styles spécifiques pour la version mobile
+        if (window.innerWidth <= 500) {
+            ancre.style.height = '8vw';
+            ancre.style.width = '8vw';
+            ancre.style.bottom = '18vw';
         }
     });
 
