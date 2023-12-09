@@ -77,7 +77,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                     <li class="search <?php echo ($current_page === 'explorer.php') ? 'active' : ''; ?>" data-where="explorer">
                         <a href="/ressources/views/explorer.php"><span class="material-icons-outlined icons-nav-mobile">search</span></a>
                     </li>
-                    <li class="products" data-where="add">
+                    <li class="products show-modal" data-where="add">
                         <span class="material-icons-outlined icons-nav-mobile">maps_ugc</span>
                     </li>
                 </ul>
