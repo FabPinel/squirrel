@@ -601,117 +601,143 @@ text-align: center;
 display: none;
 }
 
-  @media only screen and (max-width: 500px) {
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .container {
-        width: 100%;
-        margin: 0 auto;
-        position: static;
-        border-right: none;
-        border-left: none;
-    }
-
-    .profilPic {
-        width: 20%;
-        margin-left: 0;
-        margin-top: -10%;
-    }
-
-    .banner {
-      width: 100%;
-    }
-
+/* RESPONVIVE MOBILE */
+@media only screen and (min-width: 380px) and (max-width: 499px) {
     .profilEdit {
         width: 40%;
         margin-left: 30%;
         margin-top: -5%;
     }
 
-    .toggle .tabs .tab {
-        width: 100%;
-        margin: 5px 0;
+    .isFollow {
+        width: 30%;
+        margin-left: 65%;
+        margin-top: -5%;
+    } 
+
+    .follow {
+        width: 30%;
+        margin-left: 65%;
+        margin-top: -5%;
     }
 
-    .toggle .panels .panel {
-        display: block;
+    .followBack {
+        width: 44%;
+        margin-left: 52%;
+        margin-top: -3%;
     }
+}
+@media only screen and (max-width: 500px) {
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
 
-    .verifiedNickname{
-        width: 6%;
-        height: 6%;
-        margin: 4px 0px 0px 4px;
-    }
+.container {
+    width: 100%;
+    margin: 0 auto;
+    position: static;
+    border-right: none;
+    border-left: none;
+}
 
-    .profilDate {
-        flex-direction: column;
-    }
-    
-    .profilCreatedDate {
-        margin-left: 0px;
-    }
+.profilPic {
+    width: 20%;
+    margin-left: 0;
+    margin-top: -10%;
+}
 
-    .cake, .calendar {
-        margin-top: 4vw;
-    }
+.banner {
+    width: 100%;
+}
 
-    .profilEdit {
-        margin-left: 55%; 
-    }
+.profilEdit {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: -5%;
+}
 
-    .popup {
-        width: 80vw;
-        height: 158vw;
-        top: 50%;
-    }
+.toggle .tabs .tab {
+    width: 100%;
+    margin: 5px 0;
+}
 
-    .hide {
-        display: none;
-    }
+.toggle .panels .panel {
+    display: block;
+}
 
-    .arrowBackProfil {
-        margin-top: 2%;
-        position: absolute;
-        z-index: 1001;
-        background-color: rgba(255, 255, 255, 0.607);
-    }
+.verifiedNickname{
+    width: 6%;
+    height: 6%;
+    margin: 4px 0px 0px 4px;
+}
 
-    .margeMobile {
-        margin-bottom: 55px;
-    }
+.profilDate {
+    flex-direction: column;
+}
 
-    .ancre {
-        height: 8vw;
-        width: 8vw;
-        bottom: 18vw;
-    }
+.profilCreatedDate {
+    margin-left: 0px;
+}
 
-    .login-buttonProfil {
-        display: block;
-        position: relative;
-        width: 29%;
-        height: 10px;
-        text-align: center;
-        padding: 15px;
-        background-color: #E6CCB2;
-        color: white;
-        border: none;
-        border-radius: 50px;
-        text-decoration: none;
-        font-size: 15px;
-        margin-left: 17vw;
-        transition: 0.5s;
-        margin-top: -10.5vw;
-        line-height: 14px;
-    }
-    
-    .login-buttonProfil:hover {
-        background-color: #7F5539;
-        transition: 0.5s;
-    }
+.cake, .calendar {
+    margin-top: 4vw;
+}
+
+.profilEdit {
+    margin-left: 55%; 
+}
+
+.popup {
+    width: 80vw;
+    height: 158vw;
+    top: 50%;
+}
+
+.hide {
+    display: none;
+}
+
+.arrowBackProfil {
+    margin-top: 2%;
+    position: absolute;
+    z-index: 1001;
+    background-color: rgba(255, 255, 255, 0.607);
+}
+
+.margeMobile {
+    margin-bottom: 55px;
+}
+
+.ancre {
+    height: 8vw;
+    width: 8vw;
+    bottom: 18vw;
+}
+
+.login-buttonProfil {
+    display: block;
+    position: relative;
+    width: 29%;
+    height: 10px;
+    text-align: center;
+    padding: 15px;
+    background-color: #E6CCB2;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 17vw;
+    transition: 0.5s;
+    margin-top: -10.5vw;
+    line-height: 14px;
+}
+
+.login-buttonProfil:hover {
+    background-color: #7F5539;
+    transition: 0.5s;
+}
 }
 
 /* RESPONSIVE TABLETTE */

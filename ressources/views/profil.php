@@ -77,7 +77,7 @@ if (isset($_SESSION['user'])) {
                     <form action="../controller/profilController.php" method="post">
                         <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
                         <input type="hidden" name="userProfil" value="<?php echo $id_user; ?>">
-                        <button class="follow" name="follow">Suivre en retour</button>
+                        <button class="follow followBack" name="follow">Suivre en retour</button>
                     </form>
                 <?php
                 } else { ?>
