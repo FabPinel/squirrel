@@ -1,10 +1,12 @@
-(function() {
-    $(function() {
+// fonction toggle tab
+(function () {
+    $(function () {
         var toggle;
-        return toggle = new Toggle('.toggle');
+        toggle = new Toggle('.toggle');
+        toggle.show(0);
     });
 
-    this.Toggle = (function() {
+    this.Toggle = (function () {
         Toggle.prototype.el = null;
 
         Toggle.prototype.tabs = null;
@@ -18,19 +20,19 @@
             this.bind();
         }
 
-        Toggle.prototype.show = function(index) {
+        Toggle.prototype.show = function (index) {
             var activePanel, activeTab;
             this.tabs.removeClass('active');
             activeTab = this.tabs.get(index);
             $(activeTab).addClass('active');
             this.panels.hide();
             activePanel = this.panels.get(index);
-            return $(activePanel).show();
+            $(activePanel).show();
         };
 
-        Toggle.prototype.bind = function() {
+        Toggle.prototype.bind = function () {
             var _this = this;
-            return this.tabs.unbind('click').bind('click', function(e) {
+            this.el.on('click', '.tab', function (e) {
                 return _this.show($(e.currentTarget).index());
             });
         };
@@ -40,7 +42,6 @@
     })();
 
 }).call(this);
-
 
 
 const modal = document.querySelector('.modal');

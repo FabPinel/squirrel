@@ -170,7 +170,7 @@ if (isset($_SESSION['user'])) {
 
         <div class='toggle'>
             <div class='tabs'>
-                <div class='tab active'>Posts</div>
+                <div class='tab'>Posts</div>
                 <div class='tab'>Réponses</div>
                 <div class='tab'>J'aime</div>
             </div>
