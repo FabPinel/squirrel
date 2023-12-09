@@ -3,6 +3,7 @@
     $affich_users->execute(array($_SESSION['user']));
     $affichage = $affich_users->fetch();
 }
+$current_page = $_SESSION['current_page'] = basename($_SERVER['REQUEST_URI']);
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,6 @@
                     <li><a href="/ressources/views/login.php"><i class="fas fa-user"></i>Mon profil</a></li>
                 <?php } ?>
                 <li><a href="/ressources/views/explorer.php"><i class="fas fa-search"></i>Explorer</a></li>
-                <!-- <li><a href="#"><i class="fas fa-sliders-h"></i>Paramètres</a></li> -->
             </ul>
             <a href="#" class="post-button">POSTER</a>
             <?php if (!isset($_SESSION['user'])) { ?>
@@ -44,34 +44,24 @@
     </div>
     <!--PARTIE MOBILE-->
     <div class="mobileBar">
-        <!-- <div class="topbar">
-            <div class="profile-icon">
-                <a href="#profile">
-                    <i class="fas fa-user"></i>
-                </a>
-            </div>
-            <div class="logo">
-                <img src="https://image.noelshack.com/fichiers/2023/39/1/1695652660-logo-squirrel.png" alt="Logo" />
-            </div>
-            <div class="empty-space"></div>
-        </div> -->
-
         <div class="container stage">
             <div class="tabbar tab-style3">
                 <ul class="flex-center">
-                    <li class="home active" data-where="accueil">
+                    <li class="home <?php echo ($current_page === '') || ($current_page === 'index') ? 'active' : ''; ?>" data-where="accueil">
                         <a href="../../"><span class="material-icons-outlined icons-nav-mobile">home</span></a>
                     </li>
                     <?php if (isset($_SESSION['user'])) { ?>
-                        <li class="services" data-where="profil">
-                            <a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><span class="material-icons-outlined icons-nav-mobile">person</span></a>
+                        <li class="profil <?php echo (strpos($current_page, 'profil.php') !== false) ? 'active' : ''; ?>" data-where="profil">
+                            <a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>">
+                                <span class="material-icons-outlined icons-nav-mobile">person</span>
+                            </a>
                         </li>
                     <?php } else { ?>
-                        <li class="services" data-where="profil">
+                        <li class="profil" data-where="profil">
                             <a href="/ressources/views/login.php"><span class="material-icons-outlined icons-nav-mobile">person</span></a>
                         </li>
                     <?php } ?>
-                    <li class="products" data-where="recherche">
+                    <li class="search <?php echo ($current_page === 'explorer.php') ? 'active' : ''; ?>" data-where="explorer">
                         <a href="/ressources/views/explorer.php"><span class="material-icons-outlined icons-nav-mobile">search</span></a>
                     </li>
                     <li class="products" data-where="add">
@@ -81,11 +71,6 @@
             </div>
         </div>
     </div>
-
-    <div class="content">
-        <!-- Contenu principal -->
-    </div>
-
     <section></section>
     <script src="../js/navbar.js"></script>
 </body>

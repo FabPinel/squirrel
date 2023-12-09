@@ -175,7 +175,7 @@ if (isset($_SESSION['user'])) {
                 <div class='tab'>J'aime</div>
             </div>
             <div class='panels'>
-                <div class='panel'>
+                <div class='panel margeMobile'>
                     <?php if (empty($posts)) {
                         if ($isUserSession) { ?>
                             <h2 class="emptyPost">Vous n'avez aucune publication</h2>
@@ -249,7 +249,7 @@ if (isset($_SESSION['user'])) {
                     } ?>
                 </div>
 
-                <div class='panel'>
+                <div class='panel margeMobile'>
                     <?php if (empty($postsComments)) {
                         if ($isUserSession) { ?>
                             <h2 class="emptyPost">Vous n'avez commenté aucune publication</h2>
@@ -323,7 +323,7 @@ if (isset($_SESSION['user'])) {
                     } ?>
                 </div>
 
-                <div class='panel'>
+                <div class='panel margeMobile'>
                     <?php if (empty($postsLikes)) {
                         if ($isUserSession) { ?>
                             <h2 class="emptyPost">Vous n'avez aimé aucune publication</h2>
