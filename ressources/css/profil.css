@@ -713,3 +713,23 @@ display: none;
         transition: 0.5s;
     }
 }
+
+/* RESPONSIVE TABLETTE */
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+    .container{
+        width: 75%;
+    }
+
+    .popup {
+        width: 47vw;
+        height: 86vw;
+        top: 52vw;
+        left: 36%;
+    }
+
+    .profilEdit {
+        width: 27%;
+        margin-left: 67%;
+        margin-top: -5%;
+    }
+}

@@ -190,13 +190,19 @@ body {
   }
 }
 
-@media screen and (max-width: 1200px)  {
+@media screen and (min-width: 801px) and (max-width: 1200px)  {
   .sidebar {
     margin-left: 1.5vw;
   }
 
   .userNav {
     margin-top: 15vw;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+  .sidebar {
+    margin-left: -4vw;
   }
 }
 
