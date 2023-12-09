@@ -3,7 +3,8 @@
 session_start(); // Démarre la session
 //connection à la bdd
 require_once('../../configbdd.php');
-require_once('../Class/UserBanned.php'); ?>
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ressources/class/UserBanned.php');
+?>
 <link rel="stylesheet" href="../css/login.css">
 <?php
 

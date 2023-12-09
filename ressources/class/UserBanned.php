@@ -1,5 +1,5 @@
 <?php
-require_once('../Class/User.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ressources/class/User.php');
 class UserBanned extends User
 {
     private int $id;
