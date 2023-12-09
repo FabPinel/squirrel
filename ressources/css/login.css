@@ -81,6 +81,7 @@ input[type="submit"]{
   cursor: pointer;
   outline: none;
   transition: .5s;
+  margin-top: 1vw;
 }
 input[type="submit"]:hover{
   background: #ffffff;
@@ -132,4 +133,14 @@ input[type="submit"]:hover{
 
 body {
   background: rgb(230, 230, 230);
+}
+
+.newRegister {
+  color: #000000;
+  transition: .5s;
+}
+
+.newRegister:hover {
+  color: #B08968;
+  transition: .5s;
 }

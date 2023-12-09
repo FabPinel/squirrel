@@ -34,6 +34,9 @@ $affichage = $affich_users->fetch();
                 <span></span>
                 <label>Mot de passe</label>
             </div>
+            <a href="../views/register.php" class="newRegister">
+                Pas encore de compte ? S'enregistrer
+            </a>
             <input type="submit" value="Connexion">
         </form>
         <a href="/index.php">
