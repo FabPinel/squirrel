@@ -63,6 +63,9 @@ if (isset($_SESSION['user'])) {
         <?php if (isset($_SESSION['user'])) {
             if ($isUserSession) { ?>
                 <button class="profilEdit">Editer le profil</button>
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <a href="/ressources/views/logout.php" class="login-buttonProfil">DÉCONNEXION</a>
+                <?php } ?>
                 <?php } else {
                 if ($isFollow) { ?>
                     <form action="../controller/profilController.php" method="post">
