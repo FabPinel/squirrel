@@ -2,11 +2,13 @@
 require __DIR__ . '/ressources/class/Post.php';
 session_start();
 $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
-$posts = Post::getAllPosts();
 if (isset($_SESSION['user'])) {
     $sessionUser = User::getSessionUser($bdd);
     $postsFollow = Post::getAllPostsFollowByUserId($sessionUser->getId());
     $suggestUsers = User::getSuggestUsers($sessionUser->getId());
+    $posts = Post::getAllPostsExceptSessionUser($sessionUser->getId());
+} else {
+    $posts = Post::getAllPosts();
 }
 $users = User::getAllUsers();
 ?>
