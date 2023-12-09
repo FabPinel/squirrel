@@ -264,8 +264,21 @@ text-align: center;
     margin-left: -10px;
 }
 
-.profilDate {
+.profilDate, .profilBirthday, .profiCreated {
     display: flex;
+}
+
+.cake {
+    font-size: 22px; 
+    margin-top: 1vw;
+    margin-right: 0.5vw;
+}
+
+.calendar {
+    font-size: 22px; 
+    margin-top: 1vw;
+    margin-left: 0.5vw;
+    margin-right: 0.3vw;
 }
 
 .postContent{
@@ -611,6 +624,10 @@ text-align: center;
     
     .profilCreatedDate {
         margin-left: 0px;
+    }
+
+    .cake, .calendar {
+        margin-top: 4vw;
     }
 
     .profilEdit {
