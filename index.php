@@ -135,9 +135,11 @@ if (isset($_SESSION['user'])) {
 
 
                 <div class='panel'>
-                    Panel 2
                     <?php if (!isset($_SESSION['user'])) { ?>
-                        <p>Vous devez être connecté</p>
+                        <div class="aboIndex">
+                            <p>Vous devez être connecté.</p>
+                            <a href="/ressources/views/login.php" class="login-button">Se connecter</a>
+                        </div>
                     <?php
                     } else {
                     ?>
