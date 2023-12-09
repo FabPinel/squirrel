@@ -92,19 +92,19 @@ $(document).on('click', '.like-button', function () {
             var jsonResponse = JSON.parse(response);
             console.log("AJAX Response:", jsonResponse);
             console.log("Likes Count:", jsonResponse.likesCount);
-    
+
             likeButton.css('color', jsonResponse.isLiked ? 'red' : 'black');
-    
+
             // Ajoutez ou supprimez la classe 'like-active' en fonction de l'état du like
             likePost.toggleClass('like-active', jsonResponse.isLiked);
-    
+
             updateLikeCount(jsonResponse.likesCount, likeCountElement);
         },
         error: function () {
             console.log('Erreur lors de la requête AJAX');
         }
     });
-    
+
 });
 
 // Fonction de rappel pour mettre à jour le nombre de likes
@@ -135,8 +135,18 @@ $(document).ready(function () {
         if (!target.is(".likePost, .like-button, .userName, .linkAvatarUser")) {
             // Si l'élément cliqué n'est pas le bouton "like" ou le lien vers le profil,
             // effectuez la redirection vers la page du post.
+
             var postId = $(this).data("post-id");
-            window.location.href = "post.php?post=" + postId;
+            var currentUrl = window.location.href;
+
+            // Vérifiez si la page actuelle la page d'accueil
+            if (currentUrl.endsWith('index.php') || currentUrl.endsWith('/')) {
+                var postId = $(this).data("post-id");
+                window.location.href = "/ressources/views/post.php?post=" + postId;
+            } else {
+                var postId = $(this).data("post-id");
+                window.location.href = "post.php?post=" + postId;
+            }
         }
     });
 });

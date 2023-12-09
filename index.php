@@ -52,19 +52,19 @@ $users = User::getAllUsers();
                     <div class='panel'>
                         <div class="overlay hidden"></div>
                         <?php foreach ($posts as $post) : ?>
-                            <div class="unitPanelPost">
-                                <div class="userPost">
-                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
+                            <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
+                                <div class=" userPost">
+                                    <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                         <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
                                     </a>
-                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
+                                    <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                     <?php if (User::getCertif($post->getUser()->getId())) { ?>
                                         <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                     <?php } ?>
                                     <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
                                     <?php if (isset($_SESSION['user'])) {
                                         if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
-                                            <form action="../controller/postController.php" method="post">
+                                            <form action="/ressources/controller/postController.php" method="post">
                                                 <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
                                                 <button class="deleteComment" name="deletePost">
                                                     <span class="material-symbols-outlined">
@@ -128,9 +128,9 @@ $users = User::getAllUsers();
                         } else {
                         ?>
                             <?php foreach ($postsFollow as $post) : ?>
-                                <div class="unitPanelPost">
+                                <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                     <div class="userPost">
-                                        <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
+                                        <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                             <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
                                         </a>
                                         <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
@@ -205,14 +205,14 @@ $users = User::getAllUsers();
                 <?php foreach ($suggestUsers as $user) : ?>
                     <div class="suggestions-unitPanelPost">
                         <div class="suggestions-userPost">
-                            <a href="profil.php?user=<?= $user->getId(); ?>" class="linkAvatarUser">
+                            <a href="/ressources/views/profil.php?user=<?= $user->getId(); ?>" class="linkAvatarUser">
                                 <img src="<?= $user->getPicture(); ?>" alt="" class="avatarUserPost">
                             </a>
-                            <a href="profil.php?user=<?= $user->getId(); ?>" class="userName"><?= $user->getNickname(); ?></a>
+                            <a href="/ressources/views/profil.php?user=<?= $user->getId(); ?>" class="userName"><?= $user->getNickname(); ?></a>
                             <?php if (User::getCertif($user->getId())) { ?>
                                 <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                             <?php } ?>
-                            <form action="../controller/profilController.php" method="post" class="suggestion-form">
+                            <form action="/ressources/controller/profilController.php" method="post" class="suggestion-form">
                                 <input type="hidden" name="sessionUser" value="">
                                 <input type="hidden" name="userProfil" value="">
                                 <button class="follow-suggestion" name="follow">Suivre</button>
