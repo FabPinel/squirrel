@@ -3,7 +3,7 @@
     $affich_users->execute(array($_SESSION['user']));
     $affichage = $affich_users->fetch();
 }
-$current_page = $_SESSION['current_page'] = basename($_SERVER['REQUEST_URI']);
+$current_page = basename($_SERVER['REQUEST_URI']);
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +19,7 @@ $current_page = $_SESSION['current_page'] = basename($_SERVER['REQUEST_URI']);
 </head>
 
 <body>
+    <?php include 'ancre.php' ?>
     <!--PARTIE DESKTOP-->
     <div class="desktopBar">
         <div class="sidebar">

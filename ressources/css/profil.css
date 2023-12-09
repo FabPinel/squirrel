@@ -676,4 +676,10 @@ text-align: center;
     .margeMobile {
         margin-bottom: 55px;
     }
+
+    .ancre {
+        height: 8vw;
+        width: 8vw;
+        bottom: 18vw;
+    }
 }

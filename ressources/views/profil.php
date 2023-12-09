@@ -167,7 +167,6 @@ if (isset($_SESSION['user'])) {
                 <button type="submit" name="editUser" class="editUser">Enregistrer</button>
             </form>
         </div>
-        <?php include 'ancre.php' ?>
         <div class='toggle'>
             <div class='tabs'>
                 <div class='tab'>Posts</div>
