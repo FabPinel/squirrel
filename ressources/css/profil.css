@@ -127,6 +127,10 @@ body{
     margin-bottom: 50px;
     margin-left: 2.5vw;
 }
+.emptyPost {
+text-align: center;
+
+}
 
 .followProfil {
     text-decoration: none;

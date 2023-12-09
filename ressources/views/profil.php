@@ -172,201 +172,225 @@ if (isset($_SESSION['user'])) {
             </div>
             <div class='panels'>
                 <div class='panel'>
-                    <?php foreach ($posts as $post) : ?>
-                        <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
-                            <div class="userPost">
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                    <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
-                                </a>
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
-                                <?php if (User::getCertif($post->getUser()->getId())) { ?>
-                                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                                <?php } ?>
-                                <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
-                                <?php if (isset($_SESSION['user'])) {
-                                    if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
-                                        <form action="../controller/postController.php" method="post">
-                                            <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
-                                            <button class="deleteComment" name="deletePost">
-                                                <span class="material-symbols-outlined">
-                                                    cancel
-                                                </span>
-                                            </button>
-                                        </form>
-                                <?php }
-                                } ?>
-                            </div>
-                            <div class="postContent">
-                                <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
-                                    <p class="textPost"><?= $post->getTexte(); ?></p>
-                                    <?php if ($post->getMedia()) : ?>
-                                        <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                    <?php endif; ?>
-                                </a>
-                            </div>
-                            <div class="likecomment">
-                                <?php if (isset($_SESSION['user'])) { ?>
-                                    <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
-                                        <span class="material-icons-outlined like-button" style="font-size: 22px;">
-                                            favorite
-                                        </span>
-                                        <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                            <?= Post::countLikeByPostId($post->getId()); ?>
-                                        </p>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="likePost">
+                    <?php if (empty($posts)) {
+                        if ($isUserSession) { ?>
+                            <h2 class="emptyPost">Vous n'avez aucune publication</h2>
+                        <?php } else { ?>
+                            <h2 class="emptyPost"><?php echo $user->getNickname(); ?> n'a aucune publication</h2>
+                        <?php }
+                    } else { ?>
+                        <?php foreach ($posts as $post) : ?>
+                            <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
+                                <div class="userPost">
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
+                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                    </a>
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
+                                    <?php if (User::getCertif($post->getUser()->getId())) { ?>
+                                        <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                                    <?php } ?>
+                                    <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                                    <?php if (isset($_SESSION['user'])) {
+                                        if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                            <form action="../controller/postController.php" method="post">
+                                                <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                                <button class="deleteComment" name="deletePost">
+                                                    <span class="material-symbols-outlined">
+                                                        cancel
+                                                    </span>
+                                                </button>
+                                            </form>
+                                    <?php }
+                                    } ?>
+                                </div>
+                                <div class="postContent">
+                                    <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
+                                        <p class="textPost"><?= $post->getTexte(); ?></p>
+                                        <?php if ($post->getMedia()) : ?>
+                                            <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                        <?php endif; ?>
+                                    </a>
+                                </div>
+                                <div class="likecomment">
+                                    <?php if (isset($_SESSION['user'])) { ?>
+                                        <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
+                                            <span class="material-icons-outlined like-button" style="font-size: 22px;">
+                                                favorite
+                                            </span>
+                                            <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                                <?= Post::countLikeByPostId($post->getId()); ?>
+                                            </p>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="likePost">
+                                            <span class="material-icons-outlined" style="font-size: 22px;">
+                                                favorite
+                                            </span>
+                                            <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                                <?= Post::countLikeByPostId($post->getId()); ?>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="commentPost">
                                         <span class="material-icons-outlined" style="font-size: 22px;">
-                                            favorite
+                                            chat_bubble
                                         </span>
                                         <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                            <?= Post::countLikeByPostId($post->getId()); ?>
+                                            <?= Post::countCommentByPostId($post->getId()); ?>
                                         </p>
                                     </div>
-                                <?php } ?>
-                                <div class="commentPost">
-                                    <span class="material-icons-outlined" style="font-size: 22px;">
-                                        chat_bubble
-                                    </span>
-                                    <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                        <?= Post::countCommentByPostId($post->getId()); ?>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    } ?>
                 </div>
 
                 <div class='panel'>
-                    <?php foreach ($postsComments as $post) : ?>
-                        <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
-                            <div class="userPost">
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                    <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
-                                </a>
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
-                                <?php if (User::getCertif($post->getUser()->getId())) { ?>
-                                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                                <?php } ?>
-                                <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
-                                <?php if (isset($_SESSION['user'])) {
-                                    if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
-                                        <form action="../controller/postController.php" method="post">
-                                            <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
-                                            <button class="deleteComment" name="deletePost">
-                                                <span class="material-symbols-outlined">
-                                                    cancel
-                                                </span>
-                                            </button>
-                                        </form>
-                                <?php }
-                                } ?>
-                            </div>
-                            <div class="postContent">
-                                <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
-                                    <p class="textPost"><?= $post->getTexte(); ?></p>
-                                    <?php if ($post->getMedia()) : ?>
-                                        <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                    <?php endif; ?>
-                                </a>
-                            </div>
-                            <div class="likecomment">
-                                <?php if (isset($_SESSION['user'])) { ?>
-                                    <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
-                                        <span class="material-icons-outlined like-button" style="font-size: 22px;">
-                                            favorite
-                                        </span>
-                                        <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                            <?= Post::countLikeByPostId($post->getId()); ?>
-                                        </p>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="likePost">
+                    <?php if (empty($postsComments)) {
+                        if ($isUserSession) { ?>
+                            <h2 class="emptyPost">Vous n'avez commenté aucune publication</h2>
+                        <?php } else { ?>
+                            <h2 class="emptyPost"><?php echo $user->getNickname(); ?> n'a commenté aucune publication</h2>
+                        <?php }
+                    } else { ?>
+                        <?php foreach ($postsComments as $post) : ?>
+                            <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
+                                <div class="userPost">
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
+                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                    </a>
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
+                                    <?php if (User::getCertif($post->getUser()->getId())) { ?>
+                                        <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                                    <?php } ?>
+                                    <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                                    <?php if (isset($_SESSION['user'])) {
+                                        if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                            <form action="../controller/postController.php" method="post">
+                                                <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                                <button class="deleteComment" name="deletePost">
+                                                    <span class="material-symbols-outlined">
+                                                        cancel
+                                                    </span>
+                                                </button>
+                                            </form>
+                                    <?php }
+                                    } ?>
+                                </div>
+                                <div class="postContent">
+                                    <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
+                                        <p class="textPost"><?= $post->getTexte(); ?></p>
+                                        <?php if ($post->getMedia()) : ?>
+                                            <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                        <?php endif; ?>
+                                    </a>
+                                </div>
+                                <div class="likecomment">
+                                    <?php if (isset($_SESSION['user'])) { ?>
+                                        <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
+                                            <span class="material-icons-outlined like-button" style="font-size: 22px;">
+                                                favorite
+                                            </span>
+                                            <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                                <?= Post::countLikeByPostId($post->getId()); ?>
+                                            </p>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="likePost">
+                                            <span class="material-icons-outlined" style="font-size: 22px;">
+                                                favorite
+                                            </span>
+                                            <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                                <?= Post::countLikeByPostId($post->getId()); ?>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="commentPost">
                                         <span class="material-icons-outlined" style="font-size: 22px;">
-                                            favorite
+                                            chat_bubble
                                         </span>
                                         <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                            <?= Post::countLikeByPostId($post->getId()); ?>
+                                            <?= Post::countCommentByPostId($post->getId()); ?>
                                         </p>
                                     </div>
-                                <?php } ?>
-                                <div class="commentPost">
-                                    <span class="material-icons-outlined" style="font-size: 22px;">
-                                        chat_bubble
-                                    </span>
-                                    <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                        <?= Post::countCommentByPostId($post->getId()); ?>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    } ?>
                 </div>
 
                 <div class='panel'>
-                    <?php foreach ($postsLikes as $post) : ?>
-                        <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
-                            <div class="userPost">
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                    <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
-                                </a>
-                                <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
-                                <?php if (User::getCertif($post->getUser()->getId())) { ?>
-                                    <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
-                                <?php } ?>
-                                <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
-                                <?php if (isset($_SESSION['user'])) {
-                                    if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
-                                        <form action="../controller/postController.php" method="post">
-                                            <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
-                                            <button class="deleteComment" name="deletePost">
-                                                <span class="material-symbols-outlined">
-                                                    cancel
-                                                </span>
-                                            </button>
-                                        </form>
-                                <?php }
-                                } ?>
-                            </div>
-                            <div class="postContent">
-                                <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
-                                    <p class="textPost"><?= $post->getTexte(); ?></p>
-                                    <?php if ($post->getMedia()) : ?>
-                                        <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                    <?php endif; ?>
-                                </a>
-                            </div>
-                            <div class="likecomment">
-                                <?php if (isset($_SESSION['user'])) { ?>
-                                    <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
-                                        <span class="material-icons-outlined like-button" style="font-size: 22px;">
-                                            favorite
-                                        </span>
-                                        <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                            <?= Post::countLikeByPostId($post->getId()); ?>
-                                        </p>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="likePost">
+                    <?php if (empty($postsLikes)) {
+                        if ($isUserSession) { ?>
+                            <h2 class="emptyPost">Vous n'avez aimé aucune publication</h2>
+                        <?php } else { ?>
+                            <h2 class="emptyPost"><?php echo $user->getNickname(); ?> n'a aimé aucune publication</h2>
+                        <?php }
+                    } else { ?>
+                        <?php foreach ($postsLikes as $post) : ?>
+                            <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
+                                <div class="userPost">
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
+                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                    </a>
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
+                                    <?php if (User::getCertif($post->getUser()->getId())) { ?>
+                                        <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
+                                    <?php } ?>
+                                    <p class="postTime"><?= Post::getTimeElapsedString($post->getCreatedDate()); ?></p>
+                                    <?php if (isset($_SESSION['user'])) {
+                                        if ($sessionUser->getRole() == 'Admin' || $post->getUser()->getId() == $sessionUser->getId()) { ?>
+                                            <form action="../controller/postController.php" method="post">
+                                                <input type="hidden" name="idPost" value="<?php echo $post->getId(); ?>">
+                                                <button class="deleteComment" name="deletePost">
+                                                    <span class="material-symbols-outlined">
+                                                        cancel
+                                                    </span>
+                                                </button>
+                                            </form>
+                                    <?php }
+                                    } ?>
+                                </div>
+                                <div class="postContent">
+                                    <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
+                                        <p class="textPost"><?= $post->getTexte(); ?></p>
+                                        <?php if ($post->getMedia()) : ?>
+                                            <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                        <?php endif; ?>
+                                    </a>
+                                </div>
+                                <div class="likecomment">
+                                    <?php if (isset($_SESSION['user'])) { ?>
+                                        <div class="likePost <?php echo (Post::isLiked($post->getId(), $sessionUser->getId())) ? 'like-active' : ''; ?>" data-post-id="<?= $post->getId(); ?>" data-user-id="<?= $sessionUser->getId(); ?>">
+                                            <span class="material-icons-outlined like-button" style="font-size: 22px;">
+                                                favorite
+                                            </span>
+                                            <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                                <?= Post::countLikeByPostId($post->getId()); ?>
+                                            </p>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="likePost">
+                                            <span class="material-icons-outlined" style="font-size: 22px;">
+                                                favorite
+                                            </span>
+                                            <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
+                                                <?= Post::countLikeByPostId($post->getId()); ?>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="commentPost">
                                         <span class="material-icons-outlined" style="font-size: 22px;">
-                                            favorite
+                                            chat_bubble
                                         </span>
                                         <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                            <?= Post::countLikeByPostId($post->getId()); ?>
+                                            <?= Post::countCommentByPostId($post->getId()); ?>
                                         </p>
                                     </div>
-                                <?php } ?>
-                                <div class="commentPost">
-                                    <span class="material-icons-outlined" style="font-size: 22px;">
-                                        chat_bubble
-                                    </span>
-                                    <p class="numberLike like-count" data-post-id="<?= $post->getId(); ?>">
-                                        <?= Post::countCommentByPostId($post->getId()); ?>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    } ?>
                 </div>
 
             </div>
