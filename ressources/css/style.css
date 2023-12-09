@@ -393,15 +393,6 @@ body{
   }
   
   @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .container{
-      margin: 0px 40px 0px 40px;
-      width: 55%;
-      border-right: solid 0.5px gray;
-      border-left: solid 0.5px gray;
-      position: sticky;
-      top: 0;
-      left: 23%;
-  }
   
   .accueil{
       margin-top: 0px;
@@ -693,4 +684,11 @@ padding: 10px 20px;
 .suggestions-userPost {
   display: flex;
   align-items: center;
+}
+
+/* RESPONSIVE TABLETTE */
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+  .suggestions {
+    display: none;
+  }
 }
