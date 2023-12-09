@@ -631,6 +631,30 @@ padding: 10px 20px;
   }
 }
 
+@media screen and (min-width: 1280px) and (max-width: 1439px)  {
+  .suggestions {
+    height: 24vw;
+  }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1600px) {
+  .suggestions {
+    height: 22vw;
+  }
+}
+
+@media screen and (min-width: 1601px) and (max-width: 1900px) {
+  .suggestions {
+    height: 20.5vw;
+  }
+}
+
+@media screen and (max-width: 1200px)  {
+  .suggestions {
+    height: 29vw;
+  }
+}
+
 
 .follow-suggestion {
   border-radius: 40px;
