@@ -53,6 +53,18 @@ $current_page = basename($_SERVER['REQUEST_URI']);
             <?php } else { ?>
                 <a href="/ressources/views/logout.php" class="login-button">SE DÉCONNECTER</a>
             <?php } ?>
+
+            <?php if (isset($_SESSION['user'])) { ?>
+                <div class="userNav">
+                    <a href="/ressources/views/profil.php?user=<?= $affichage['id']; ?>" class="linkAvatarUserNav">
+                        <img src="<?= $affichage['picture']; ?>" alt="" class="avatarUserNav">
+                    </a>
+                    <a href="/ressources/views/profil.php?user=<?= $affichage['id']; ?>" class="userNameNav"><?= $affichage['nickname']; ?></a>
+                    <?php if ($affichage['isVerify']) { ?>
+                        <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verifiedNav">
+                    <?php } ?>
+                </div>
+            <?php } ?>
         </div>
     </div>
     <!--PARTIE MOBILE-->

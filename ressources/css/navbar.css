@@ -28,24 +28,6 @@ body {
     flex-direction: column;
     margin-left: 10.5vw;
   }
-
-  @media screen and (min-width: 1280px) and (max-width: 1439px)  {
-    .sidebar {
-      margin-left: 6vw;
-    }
-  }
-
-  @media screen and (min-width: 1440px) and (max-width: 1600px) {
-    .sidebar {
-      margin-left: 8.5vw;
-    }
-  }
-
-  @media screen and (max-width: 1200px)  {
-    .sidebar {
-      margin-left: 1.5vw;
-    }
-  }
   
   .sidebar-top-logo {
     font-size: 22px;
@@ -126,6 +108,96 @@ body {
 
 .mobileBar{
   display: none;
+}
+
+.userNav {
+  display: flex;
+  align-items: center;
+}
+
+.avatarUserNav {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.linkAvatarUserNav {
+  transition: 0.5s;
+}
+
+.linkAvatarUserNav:hover {
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.userNameNav {
+  font-size: 17px;
+  font-weight: 800;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  text-decoration-line: none;
+}
+
+.userNameNav:hover {
+  text-decoration-line: underline;
+}
+
+.verifiedNav {
+  width: 16px;
+  height: 16px;
+  margin: 4px 0px 0px 4px;
+}
+
+.userNav {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px 0px 40px;
+  border-radius: 35px;
+  margin-right: 0.5vw;
+  width: 11vw;
+  transition: 0.5s;
+  margin-top: 10vw;
+}
+
+.userNav:hover {
+  background-color: rgb(239, 234, 234);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 1280px) and (max-width: 1439px)  {
+  .sidebar {
+    margin-left: 6vw;
+  }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1600px) {
+  .sidebar {
+    margin-left: 8.5vw;
+  }
+}
+
+@media screen and (min-width: 1601px) and (max-width: 1900px) {
+  .sidebar {
+    margin-left: 8.5vw;
+  }
+
+  .userNav {
+    margin-top: 8vw;
+  }
+}
+
+@media screen and (max-width: 1200px)  {
+  .sidebar {
+    margin-left: 1.5vw;
+  }
+
+  .userNav {
+    margin-top: 15vw;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -224,7 +296,6 @@ body {
       padding-left: 0px;
     }
   
-    
 }
 
 

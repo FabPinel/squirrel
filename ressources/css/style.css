@@ -82,11 +82,16 @@ body{
     object-fit: cover;
   }
 
+  .linkAvatarUser{
+    transition: 0.5s;
+  }
+
   .linkAvatarUser:hover{
     opacity: 0.7;
+    transition: 0.5s;
   }
   
-.userName{
+.userName {
     font-size: 17px;
     font-weight: 800;
     color: black;
@@ -94,7 +99,7 @@ body{
     text-decoration-line: none;
 }
 
-.userName:hover{
+.userName:hover {
     text-decoration-line: underline;
 }
 
@@ -104,7 +109,7 @@ body{
     font-size: 16px;
 }
 
-.verified{
+.verified {
     width: 16px;
     height: 16px;
     margin: 4px 0px 0px 4px;
@@ -272,6 +277,7 @@ body{
   
     .linkAvatarUser:hover{
       opacity: 0.7;
+      transition: 0.5s;
     }
     
   .userName{
@@ -462,6 +468,7 @@ body{
   
     .linkAvatarUser:hover{
       opacity: 0.7;
+      transition: 0.5s;
     }
     
   .userName{
@@ -481,7 +488,7 @@ body{
       margin: 4px 0px 0px 4px;
   }
   
-  .verified{
+  .verified , .verifiedNav{
       width: 16px;
       height: 16px;
       margin: 4px 0px 0px 4px;
