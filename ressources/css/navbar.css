@@ -40,6 +40,12 @@ body {
       margin-left: 8.5vw;
     }
   }
+
+  @media screen and (max-width: 1200px)  {
+    .sidebar {
+      margin-left: 1.5vw;
+    }
+  }
   
   .sidebar-top-logo {
     font-size: 22px;
