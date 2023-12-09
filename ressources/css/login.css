@@ -108,20 +108,20 @@ input[type="submit"]:hover{
 }
 
 .BtnRetour {
-  width: 90%;
-  height: 50px;
-  border: 1px solid;
-  background: #B08968;
-  border-radius: 25px;
-  font-size: 18px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: .5s;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  margin-bottom: 1vw;
+  display: block;
+    width: 320px;
+    height: 50px;
+    border: 1px solid;
+    background: #B08968;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: .5s;
+    margin: 0px auto 1vw auto;
+    text-transform: none;
 }
 
 .BtnRetour:hover{
