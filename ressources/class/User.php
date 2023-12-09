@@ -583,4 +583,45 @@ class User
             return false;
         }
     }
+
+    //Avoir des suggestion de 3 utilisateurs
+    public static function getSuggestUsers($userId)
+    {
+        global $bdd;
+        $limit = 3;
+
+        $query = $bdd->prepare("SELECT * FROM users WHERE id <> :userId ORDER BY RAND() LIMIT :limit");
+        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $query->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $query->execute();
+
+        $users = [];
+
+        while ($user = $query->fetch(PDO::FETCH_ASSOC)) {
+            $userObj = new User(
+                $user['id'],
+                $user['firstName'],
+                $user['lastName'],
+                $user['nickname'],
+                $user['email'],
+                $user['picture'],
+                $user['banner'],
+                $user['bio'],
+                $user['role'],
+                $user['createdDate'],
+                $user['birthday'],
+                $user['isVerify']
+            );
+
+            // Vérifier si l'utilisateur connecté suit déjà ce compte
+            $isFollowing = self::getFollow($userId, $user['id']);
+
+            // Ajouter l'utilisateur à la liste seulement s'il n'est pas déjà suivi
+            if (!$isFollowing) {
+                $users[] = $userObj;
+            }
+        }
+
+        return $users;
+    }
 }
