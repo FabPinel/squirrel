@@ -228,8 +228,8 @@ $users = User::getAllUsers();
                                 <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                             <?php } ?>
                             <form action="/ressources/controller/profilController.php" method="post" class="suggestion-form">
-                                <input type="hidden" name="sessionUser" value="">
-                                <input type="hidden" name="userProfil" value="">
+                                <input type="hidden" name="sessionUser" value="<?php echo $sessionUser->getId(); ?>">
+                                <input type="hidden" name="userProfil" value="<?php echo $user->getId(); ?>">
                                 <button class="follow-suggestion" name="follow">Suivre</button>
                             </form>
                         </div>
