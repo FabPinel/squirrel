@@ -24,7 +24,6 @@ $users = User::getAllUsers();
 
 <body>
     <?php include './navbar.php' ?>
-    <?php include './modal-post.php' ?>
     <div class="container">
         <div class="profilTop"> <span class="material-symbols-outlined arrowBackProfil" onclick="goBack()">
                 arrow_back
