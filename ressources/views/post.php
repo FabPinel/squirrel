@@ -69,9 +69,9 @@ if (isset($_SESSION['user'])) {
                     <div class="postContent">
                         <p class="textPost"><?= $post->getTexte(); ?></a>
                             <?php if ($post->getMedia()) { ?>
-                                <a href="/ressources/img/<?= $post->getMedia(); ?>" class="without-caption image-link">
-                                    <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                </a>
+                                <span class="without-caption image-link">
+                                    <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                </span>
                             <?php } ?>
 
                     </div>

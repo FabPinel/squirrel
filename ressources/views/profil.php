@@ -221,9 +221,9 @@ if (isset($_SESSION['user'])) {
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) { ?>
-                                            <?php if ($post->getMedia()) : ?>
+                                            <span class="without-caption image-link">
                                                 <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                            <?php endif; ?>
+                                            </span>
                                         <?php } ?>
                                     </a>
                                 </div>
@@ -297,9 +297,9 @@ if (isset($_SESSION['user'])) {
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) { ?>
-                                            <?php if ($post->getMedia()) : ?>
+                                            <span class="without-caption image-link">
                                                 <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                            <?php endif; ?>
+                                            </span>
                                         <?php } ?>
                                     </a>
                                 </div>
@@ -373,9 +373,9 @@ if (isset($_SESSION['user'])) {
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) { ?>
-                                            <?php if ($post->getMedia()) : ?>
+                                            <span class="without-caption image-link">
                                                 <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                            <?php endif; ?>
+                                            </span>
                                         <?php } ?>
                                     </a>
                                 </div>
