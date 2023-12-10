@@ -71,11 +71,6 @@ body{
     transition: 0.5s;
 }
 
-
-.edit {
-    padding-top:-10%;
-}
-
 .bio {
     margin-left: 2%;
 }
@@ -339,50 +334,9 @@ text-align: center;
 }
 
 .image-link {
-    cursor: -webkit-zoom-in;
-    cursor: -moz-zoom-in;
     cursor: zoom-in;
   }
   
-  .mfp-with-zoom .mfp-container,
-  .mfp-with-zoom.mfp-bg {
-      opacity: 0;
-      -webkit-backface-visibility: hidden;
-      -webkit-transition: all 0.3s ease-out; 
-      -moz-transition: all 0.3s ease-out; 
-      -o-transition: all 0.3s ease-out; 
-      transition: all 0.3s ease-out;
-  }
-  
-  .mfp-with-zoom.mfp-ready .mfp-container {
-          opacity: 1;
-  }
-  .mfp-with-zoom.mfp-ready.mfp-bg {
-          opacity: 0.8;
-  }
-  
-  .mfp-with-zoom.mfp-removing .mfp-container, 
-  .mfp-with-zoom.mfp-removing.mfp-bg {
-      opacity: 0;
-  }
-  
-  .mfp-no-margins img.mfp-img {
-      padding: 0;
-  }
-
-  .mfp-no-margins .mfp-figure:after {
-      top: 0;
-      bottom: 0;
-  }
-
-  .mfp-no-margins .mfp-container {
-      padding: 0;
-  }
-  
-  .mfp-title {
-    text-align: center;
-    padding: 6px 0;
-  }
 
   .image-source-link {
     color: #DDD;
