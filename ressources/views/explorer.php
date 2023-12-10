@@ -20,6 +20,7 @@ $users = User::getAllUsers();
     <script src="/ressources/js/profil.js"></script>
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
     <title>Squirrel - Expoler</title>
+    <meta name="description" content="Liste des utilisateurs">
 </head>
 
 <body>

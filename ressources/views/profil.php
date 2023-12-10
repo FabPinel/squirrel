@@ -41,6 +41,7 @@ if (isset($_SESSION['user'])) {
     <script src="/ressources/js/profil.js"></script>
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
     <title>Squirrel - <?php echo $user->getNickname() ?></title>
+    <meta name="description" content="Profil utilisateur">
 </head>
 
 <body>
@@ -194,8 +195,8 @@ if (isset($_SESSION['user'])) {
                         <?php foreach ($posts as $post) : ?>
                             <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                 <div class="userPost">
-                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                    <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser" alt="Lien profil">
+                                        profil<img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
                                     </a>
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                     <?php if (User::getCertif($post->getUser()->getId())) { ?>
@@ -219,7 +220,7 @@ if (isset($_SESSION['user'])) {
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) : ?>
-                                            <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                            <img src="<?= $post->getMedia(); ?>" alt="Lien vers image" class="imgPost">
                                         <?php endif; ?>
                                     </a>
                                 </div>

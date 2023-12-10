@@ -27,6 +27,7 @@ if (isset($_SESSION['user'])) {
     <script src="/ressources/js/profil.js"></script>
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
     <title>Squirrel</title>
+    <meta name="description" content="Explorer les posts">
 </head>
 
 <body>

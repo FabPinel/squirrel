@@ -27,6 +27,7 @@ $users = User::getAllUsers();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
     <title>Squirrel</title>
+    <meta name="description" content="Bienvenue sur squirrel !">
 </head>
 
 <body>

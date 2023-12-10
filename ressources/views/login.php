@@ -18,6 +18,7 @@ $affichage = $affich_users->fetch();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/ressources/img/logo.png" />
     <link rel="stylesheet" href="../css/login.css">
+    <meta name="description" content="Se connecter">
 </head>
 
 <body>
