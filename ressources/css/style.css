@@ -550,12 +550,14 @@ padding: 10px 20px;
 @media screen and (min-width: 1280px) and (max-width: 1439px)  {
   .suggestions {
     height: 24vw;
+    margin-left: 73%;
   }
 }
 
 @media screen and (min-width: 1440px) and (max-width: 1600px) {
   .suggestions {
     height: 22vw;
+    margin-left: 73%;
   }
 }
 
