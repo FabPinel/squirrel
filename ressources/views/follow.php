@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/profil.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="/ressources/js/profil.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png">
+    <title>Squirrel - Follow</title>
+    <meta name="description" content="Liste de vos abonnesments / abonnés">
+</head>
+
 <?php
 require_once __DIR__ . '../../class/Post.php';
 require_once __DIR__ . '../../class/Follow.php';
@@ -17,23 +32,7 @@ if (isset($_SESSION['user'])) {
         $isUserSession = true;
     }
 }
-
-
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profil.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="/ressources/js/profil.js"></script>
-    <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png" />
-    <title>Squirrel - Follow</title>
-    <meta name="description" content="Liste de vos abonnesments / abonnés">
-</head>
 
 <body>
     <?php include './navbar.php' ?>

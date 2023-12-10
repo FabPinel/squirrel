@@ -1,13 +1,5 @@
-<?php if (isset($_SESSION['user'])) {
-    $affich_users = $bdd->prepare('SELECT * FROM users WHERE id=?');
-    $affich_users->execute(array($_SESSION['user']));
-    $affichage = $affich_users->fetch();
-}
-$current_page = basename($_SERVER['REQUEST_URI']);
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -18,6 +10,14 @@ $current_page = basename($_SERVER['REQUEST_URI']);
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <meta name="description" content="Menu">
 </head>
+
+<?php if (isset($_SESSION['user'])) {
+    $affich_users = $bdd->prepare('SELECT * FROM users WHERE id=?');
+    $affich_users->execute(array($_SESSION['user']));
+    $affichage = $affich_users->fetch();
+}
+$current_page = basename($_SERVER['REQUEST_URI']);
+?>
 
 <body>
     <?php include 'ancre.php' ?>

@@ -36,7 +36,7 @@
       }
 
       .modal-post input {
-          width: -webkit-fill-available;
+          width: 100%;
           border: none;
           outline: none;
       }
@@ -63,8 +63,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          width: -webkit-fill-available;
-          ;
+          width: 100%;
           height: 100%;
           background-color: rgba(0, 0, 0, 0.6);
           backdrop-filter: blur(3px);

@@ -1,14 +1,3 @@
-<?php
-
-session_start();
-
-//connection à la bdd
-require_once('../../configbdd.php');
-
-$affich_users = $bdd->prepare('SELECT * FROM users');
-$affich_users->execute(array());
-$affichage = $affich_users->fetch();
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -20,6 +9,17 @@ $affichage = $affich_users->fetch();
     <link rel="stylesheet" href="../css/login.css">
     <meta name="description" content="Se connecter">
 </head>
+<?php
+
+session_start();
+
+//connection à la bdd
+require_once('../../configbdd.php');
+
+$affich_users = $bdd->prepare('SELECT * FROM users');
+$affich_users->execute(array());
+$affichage = $affich_users->fetch();
+?>
 
 <body>
     <div class="center">
