@@ -691,4 +691,9 @@ padding: 10px 20px;
   .suggestions {
     display: none;
   }
+
+  .container{
+    margin: 0px 0px 0px 0px;
+    left: 25%;
+}
 }
