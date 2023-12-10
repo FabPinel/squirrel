@@ -98,7 +98,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                         <?php
                         } else {
                         ?>
-                            <a href="./login.php" class="material-icons-outlined icons-nav-mobile">maps_ugc</a>
+                            <a href="/ressources/views/login.php" class="material-icons-outlined icons-nav-mobile">maps_ugc</a>
                         <?php
                         }
                         ?>
