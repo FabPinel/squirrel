@@ -19,7 +19,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
         <ul>
             <li><a href="../../"><span class="material-icons-outlined iconNav">home</span>Accueil</a></li>
             <?php if (isset($_SESSION['user'])) { ?>
-                <li><a href="/ressources/views/login.php"><span class="material-icons-outlined iconNav">person</span>Mon profil</a></li>
+                <li><a href="/ressources/views/profil.php?user=<?= $affichage['id'] ?>"><span class="material-icons-outlined iconNav">person</span>Mon profil</a></li>
             <?php } else { ?>
                 <li><a href="/ressources/views/login.php"><span class="material-icons-outlined iconNav">person</span>Mon profil</a></li>
             <?php } ?>
