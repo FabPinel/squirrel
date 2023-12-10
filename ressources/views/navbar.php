@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="utf-8">
-    <title>Squirrel</title>
-    <link rel="stylesheet" href="/ressources/css/navbar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <meta name="description" content="Menu">
-</head>
+<link rel="stylesheet" href="/ressources/css/navbar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <?php if (isset($_SESSION['user'])) {
     $affich_users = $bdd->prepare('SELECT * FROM users WHERE id=?');
