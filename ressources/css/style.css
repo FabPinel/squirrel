@@ -4,7 +4,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-.container{
+.containerIndex{
     margin: 0px 120px 0px 120px;
     width: 45%;
     border-right: solid 0.5px gray;
@@ -158,14 +158,6 @@ body{
   }
 
   @media screen and (max-width: 768px) {
-    .container{
-      margin: 0px 0px 0px 0px;
-      width: 100%;
-      border: none;
-      position: sticky;
-      top: 0;
-  }
-  
   .accueil{
       margin-top: 0px;
       padding-left: 10px;
@@ -548,13 +540,23 @@ padding: 10px 20px;
   align-items: center;
 }
 
+@media screen and (max-width: 500px) {
+  .containerIndex{
+    width: 100%;
+    margin: 0 auto;
+    position: static;
+    border-right: none;
+    border-left: none;
+    margin-bottom: 14vw;
+}
+}
 /* RESPONSIVE TABLETTE */
 @media only screen and (min-width: 768px) and (max-width: 840px) {
   .suggestions {
     display: none;
   }
 
-  .container{
+  .containerIndex{
     margin: 0px 0px 0px 0px;
     left: 25%;
 }

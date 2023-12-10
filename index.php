@@ -2,15 +2,13 @@
 <html lang="fr">
 
 <head>
+    <title>Squirrel</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./ressources/css/style.css">
     <link rel="stylesheet" href="./ressources/css/profil.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/ressources/js/profil.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png">
-    <title>Squirrel</title>
     <meta name="description" content="Bienvenue sur squirrel !">
 </head>
 <?php
@@ -30,12 +28,9 @@ $users = User::getAllUsers();
 
 <body>
     <?php include './ressources/views/navbar.php' ?>
-
     <div class="flux-suggestion">
-
-        <div class="container">
+        <div class="containerIndex">
             <?php include './ressources/views/modal-post.php' ?>
-
             <h1 class="accueil">Accueil</h1>
             <div class='toggle'>
                 <div class='tabs'>
@@ -45,11 +40,8 @@ $users = User::getAllUsers();
                     <div class='tab'>
                         Abonnements
                     </div>
-
                 </div>
-
                 <div class='panels'>
-
                     <div class='panel'>
                         <div class="overlay hidden"></div>
                         <?php if (empty($posts)) { ?>
@@ -121,11 +113,7 @@ $users = User::getAllUsers();
                                 </div>
                         <?php endforeach;
                         } ?>
-
                     </div>
-
-
-
 
                     <div class='panel'>
                         <?php if (!isset($_SESSION['user'])) { ?>
@@ -210,12 +198,9 @@ $users = User::getAllUsers();
                         }
                         ?>
                     </div>
-
                 </div>
             </div>
             </script>
-
-
         </div>
         <?php if (isset($_SESSION['user'])) { ?>
             <div class="suggestions">
@@ -236,14 +221,14 @@ $users = User::getAllUsers();
                                 <button class="follow-suggestion" name="follow">Suivre</button>
                             </form>
                         </div>
-
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php } ?>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/ressources/js/profil.js"></script>
     <script src="/ressources/js/index.js"></script>
-
 </body>
 
 </html>
