@@ -178,15 +178,24 @@ body {
   .sidebar {
     margin-left: 8.5vw;
   }
+  .userNav {
+    margin-top: 7vw;
+  }
 }
 
-@media screen and (min-width: 1601px) and (max-width: 1900px) {
+@media screen and (min-width: 1601px) and (max-width: 1700px) {
   .sidebar {
     margin-left: 8.5vw;
   }
 
   .userNav {
-    margin-top: 8vw;
+    margin-top: 7.5vw;
+  }
+}
+
+@media screen and (min-width: 1701px) and (max-width: 2000px) {
+  .userNav {
+    margin-top: 6.5vw;
   }
 }
 
