@@ -8,6 +8,8 @@
     <link rel="icon" type="image/x-icon" href="/ressources/img/logo.png" />
     <link rel="stylesheet" href="../css/login.css">
     <meta name="description" content="Se connecter">
+    <link rel="icon" type="image/x-icon" href="https://image.noelshack.com/fichiers/2023/39/1/1695652660-favicon-squirrel.png">
+    <title>Squirrel - Login</title>
 </head>
 <?php
 
