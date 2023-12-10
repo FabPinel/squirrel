@@ -35,7 +35,7 @@ $users = User::getAllUsers();
             <div class="unitPanelPost">
                 <div class="userPost">
                     <a href="profil.php?user=<?= $user->getId(); ?>" class="linkAvatarUser">
-                        <img src="<?= $user->getPicture(); ?>" alt="" class="avatarUserPost">
+                        <img src="<?= $user->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                     </a>
                     <a href="profil.php?user=<?= $user->getId(); ?>" class="userName"><?= $user->getNickname(); ?></a>
                     <?php if (User::getCertif($user->getId())) { ?>

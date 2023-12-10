@@ -12,7 +12,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
 <head>
     <meta charset="utf-8">
     <title>Squirrel</title>
-    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="/ressources/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
             <?php if (isset($_SESSION['user'])) { ?>
                 <div class="userNav">
                     <a href="/ressources/views/profil.php?user=<?= $affichage['id']; ?>" class="linkAvatarUserNav">
-                        <img src="<?= $affichage['picture']; ?>" alt="" class="avatarUserNav">
+                        <img src="<?= $affichage['picture']; ?>" alt="Profil utilisateur" class="avatarUserNav">
                     </a>
                     <a href="/ressources/views/profil.php?user=<?= $affichage['id']; ?>" class="userNameNav"><?= $affichage['nickname']; ?></a>
                     <?php if ($affichage['isVerify']) { ?>
@@ -109,7 +109,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
         </div>
     </div>
     <section></section>
-    <script src="../js/navbar.js"></script>
+    <script src="/ressources/js/navbar.js"></script>
 </body>
 
 </html>

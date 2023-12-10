@@ -44,7 +44,7 @@ if (isset($_SESSION['user'])) {
                 <div class="unitPanelPost">
                     <div class="userPost">
                         <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                            <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                            <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                         </a>
                         <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
                         <?php if (User::getCertif($post->getUser()->getId())) { ?>
@@ -67,9 +67,9 @@ if (isset($_SESSION['user'])) {
                     </div>
                     <div class="postContent">
                         <p class="textPost"><?= $post->getTexte(); ?></a>
-                            <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                            <span class="without-caption image-link">
                                 <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                            </a>
+                            </span>
                     </div>
                     <div class="likecomment">
                         <?php if (isset($_SESSION['user'])) { ?>
@@ -109,7 +109,7 @@ if (isset($_SESSION['user'])) {
                     <div class="unitPanelPost">
                         <div class="userPost">
                             <a href="profil.php?user=<?= $sessionUser->getId(); ?>" class="linkAvatarUser">
-                                <img src="<?= $sessionUser->getPicture(); ?>" alt="" class="avatarUserPost">
+                                <img src="<?= $sessionUser->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                             </a>
                             <textarea class="reponse" name="reponse" id="commentText" oninput="checkCommentText()" placeholder="Postez votre réponse"></textarea>
                             <button type="submit" name="newComment" class="newComment" id="submitButton" disabled>Répondre</button>
@@ -121,7 +121,7 @@ if (isset($_SESSION['user'])) {
                 <div class="unitPanelPost">
                     <div class="userPost">
                         <a href="profil.php?user=<?= $comment->getUser()->getId(); ?>" class="linkAvatarUser">
-                            <img src="<?= $comment->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                            <img src="<?= $comment->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                         </a>
                         <a href="profil.php?user=<?= $comment->getUser()->getId(); ?>" class="userName"><?= $comment->getUser()->getNickname(); ?></a>
                         <?php if (User::getCertif($comment->getUser()->getId())) { ?>

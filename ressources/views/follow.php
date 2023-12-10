@@ -62,7 +62,7 @@ if (isset($_SESSION['user'])) {
                             <div class="unitPanelPost">
                                 <div class="userPost">
                                     <a href="profil.php?user=<?= $follower->getUser()->getId(); ?>" class="linkAvatarUser">
-                                        <img src="<?= $follower->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                        <img src="<?= $follower->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                     </a>
                                     <a href="profil.php?user=<?= $follower->getUser()->getId(); ?>" class="userName"><?= $follower->getUser()->getNickname(); ?></a>
                                     <?php if (User::getCertif($follower->getUser()->getId())) { ?>
@@ -90,7 +90,7 @@ if (isset($_SESSION['user'])) {
                             <div class="unitPanelPost">
                                 <div class="userPost">
                                     <a href="profil.php?user=<?= $follow->getUser()->getId(); ?>" class="linkAvatarUser">
-                                        <img src="<?= $follow->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                        <img src="<?= $follow->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                     </a>
                                     <a href="profil.php?user=<?= $follow->getUser()->getId(); ?>" class="userName"><?= $follow->getUser()->getNickname(); ?></a>
                                     <?php if (User::getCertif($follow->getUser()->getId())) { ?>

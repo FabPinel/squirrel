@@ -196,7 +196,7 @@ if (isset($_SESSION['user'])) {
                             <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                 <div class="userPost">
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser" alt="Lien profil">
-                                        profil<img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                     </a>
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                     <?php if (User::getCertif($post->getUser()->getId())) { ?>
@@ -270,7 +270,7 @@ if (isset($_SESSION['user'])) {
                             <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                 <div class="userPost">
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                     </a>
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                     <?php if (User::getCertif($post->getUser()->getId())) { ?>
@@ -344,7 +344,7 @@ if (isset($_SESSION['user'])) {
                             <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                 <div class="userPost">
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                        <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                     </a>
                                     <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                     <?php if (User::getCertif($post->getUser()->getId())) { ?>

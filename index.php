@@ -20,7 +20,6 @@ $users = User::getAllUsers();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./ressources/css/style.css">
-    <link rel="stylesheet" href="./ressources/css/navbar.css">
     <link rel="stylesheet" href="./ressources/css/profil.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/ressources/js/profil.js"></script>
@@ -63,7 +62,7 @@ $users = User::getAllUsers();
                                 <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                     <div class=" userPost">
                                         <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                            <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                            <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                         </a>
                                         <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                         <?php if (User::getCertif($post->getUser()->getId())) { ?>
@@ -85,9 +84,9 @@ $users = User::getAllUsers();
                                     </div>
                                     <div class="postContent">
                                         <p class="textPost"><?= $post->getTexte(); ?></a>
-                                            <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                                            <span class="without-caption image-link">
                                                 <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                            </a>
+                                            </span>
                                     </div>
                                     <div class="likecomment">
                                         <?php if (isset($_SESSION['user'])) { ?>
@@ -146,7 +145,7 @@ $users = User::getAllUsers();
                                     <div class="unitPanelPost clickable-post" data-post-id="<?= $post->getId(); ?>">
                                         <div class="userPost">
                                             <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
-                                                <img src="<?= $post->getUser()->getPicture(); ?>" alt="" class="avatarUserPost">
+                                                <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                             </a>
                                             <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
                                             <?php if (User::getCertif($post->getUser()->getId())) { ?>
@@ -168,9 +167,9 @@ $users = User::getAllUsers();
                                         </div>
                                         <div class="postContent">
                                             <p class="textPost"><?= $post->getTexte(); ?></a>
-                                                <a href="<?= $post->getMedia(); ?>" class="without-caption image-link">
+                                                <span class="without-caption image-link">
                                                     <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                                </a>
+                                                </span>
                                         </div>
                                         <div class="likecomment">
                                             <?php if (isset($_SESSION['user'])) { ?>
@@ -222,7 +221,7 @@ $users = User::getAllUsers();
                     <div class="suggestions-unitPanelPost">
                         <div class="suggestions-userPost">
                             <a href="/ressources/views/profil.php?user=<?= $user->getId(); ?>" class="linkAvatarUser">
-                                <img src="<?= $user->getPicture(); ?>" alt="" class="avatarUserPost">
+                                <img src="<?= $user->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                             </a>
                             <a href="/ressources/views/profil.php?user=<?= $user->getId(); ?>" class="userName"><?= $user->getNickname(); ?></a>
                             <?php if (User::getCertif($user->getId())) { ?>
