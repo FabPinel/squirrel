@@ -67,9 +67,11 @@ if (isset($_SESSION['user'])) {
                     </div>
                     <div class="postContent">
                         <p class="textPost"><?= $post->getTexte(); ?></a>
-                            <span class="without-caption image-link">
-                                <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                            </span>
+                            <?php if ($post->getMedia()) { ?>
+                                <span class="without-caption image-link">
+                                    <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                </span>
+                            <?php } ?>
                     </div>
                     <div class="likecomment">
                         <?php if (isset($_SESSION['user'])) { ?>

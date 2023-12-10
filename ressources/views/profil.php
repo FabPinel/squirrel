@@ -219,9 +219,11 @@ if (isset($_SESSION['user'])) {
                                 <div class="postContent">
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
-                                        <?php if ($post->getMedia()) : ?>
-                                            <img src="<?= $post->getMedia(); ?>" alt="Lien vers image" class="imgPost">
-                                        <?php endif; ?>
+                                        <?php if ($post->getMedia()) { ?>
+                                            <?php if ($post->getMedia()) : ?>
+                                                <img src="<?= $post->getMedia(); ?>" alt="Lien vers image" class="imgPost">
+                                            <?php endif; ?>
+                                        <?php } ?>
                                     </a>
                                 </div>
                                 <div class="likecomment">
@@ -293,9 +295,11 @@ if (isset($_SESSION['user'])) {
                                 <div class="postContent">
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
-                                        <?php if ($post->getMedia()) : ?>
-                                            <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                        <?php endif; ?>
+                                        <?php if ($post->getMedia()) { ?>
+                                            <?php if ($post->getMedia()) : ?>
+                                                <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                            <?php endif; ?>
+                                        <?php } ?>
                                     </a>
                                 </div>
                                 <div class="likecomment">
@@ -367,9 +371,11 @@ if (isset($_SESSION['user'])) {
                                 <div class="postContent">
                                     <a href="post.php?post=<?= $post->getId(); ?>" class="post-link">
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
-                                        <?php if ($post->getMedia()) : ?>
-                                            <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                        <?php endif; ?>
+                                        <?php if ($post->getMedia()) { ?>
+                                            <?php if ($post->getMedia()) : ?>
+                                                <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                            <?php endif; ?>
+                                        <?php } ?>
                                     </a>
                                 </div>
                                 <div class="likecomment">
