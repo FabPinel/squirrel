@@ -43,7 +43,7 @@ $users = User::getAllUsers();
                     <?php } ?>
                 </div>
                 <div class="postContent">
-                    <p class="textPost"><?= $user->getBio(); ?></a>
+                    <p class="textPost"><?= $user->getBio(); ?></p>
                 </div>
             </div>
         <?php endforeach; ?>

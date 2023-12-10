@@ -55,7 +55,7 @@ $users = User::getAllUsers();
                                         <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                             <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                         </a>
-                                        <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
+                                        <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
                                         <?php if (User::getCertif($post->getUser()->getId())) { ?>
                                             <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                         <?php } ?>
@@ -74,12 +74,12 @@ $users = User::getAllUsers();
                                         } ?>
                                     </div>
                                     <div class="postContent">
-                                        <p class="textPost"><?= $post->getTexte(); ?></a>
-                                            <?php if ($post->getMedia()) { ?>
-                                                <span class="without-caption image-link">
-                                                    <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                                </span>
-                                            <?php } ?>
+                                        <p class="textPost"><?= $post->getTexte(); ?></p>
+                                        <?php if ($post->getMedia()) { ?>
+                                            <span class="without-caption image-link">
+                                                <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                            </span>
+                                        <?php } ?>
                                     </div>
                                     <div class="likecomment">
                                         <?php if (isset($_SESSION['user'])) { ?>
@@ -136,7 +136,7 @@ $users = User::getAllUsers();
                                             <a href="/ressources/views/profil.php?user=<?= $post->getUser()->getId(); ?>" class="linkAvatarUser">
                                                 <img src="<?= $post->getUser()->getPicture(); ?>" alt="Profil utilisateur" class="avatarUserPost">
                                             </a>
-                                            <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><strong><?= $post->getUser()->getNickname(); ?></a></strong>
+                                            <a href="profil.php?user=<?= $post->getUser()->getId(); ?>" class="userName"><?= $post->getUser()->getNickname(); ?></a>
                                             <?php if (User::getCertif($post->getUser()->getId())) { ?>
                                                 <img src="https://image.noelshack.com/fichiers/2023/48/6/1701552525-squirrel-verified.png" alt="" class="verified">
                                             <?php } ?>
@@ -155,12 +155,12 @@ $users = User::getAllUsers();
                                             } ?>
                                         </div>
                                         <div class="postContent">
-                                            <p class="textPost"><?= $post->getTexte(); ?></a>
-                                                <?php if ($post->getMedia()) { ?>
-                                                    <span class="without-caption image-link">
-                                                        <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                                    </span>
-                                                <?php } ?>
+                                            <p class="textPost"><?= $post->getTexte(); ?></p>
+                                            <?php if ($post->getMedia()) { ?>
+                                                <span class="without-caption image-link">
+                                                    <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                                </span>
+                                            <?php } ?>
                                         </div>
                                         <div class="likecomment">
                                             <?php if (isset($_SESSION['user'])) { ?>
@@ -200,7 +200,6 @@ $users = User::getAllUsers();
                     </div>
                 </div>
             </div>
-            </script>
         </div>
         <?php if (isset($_SESSION['user'])) { ?>
             <div class="suggestions">

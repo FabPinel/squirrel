@@ -69,7 +69,7 @@ if (isset($_SESSION['user'])) {
                                     <?php } ?>
                                 </div>
                                 <div class="postContent">
-                                    <p class="textPost"><?= $follower->getUser()->getBio(); ?></a>
+                                    <p class="textPost"><?= $follower->getUser()->getBio(); ?></p>
                                 </div>
                             </div>
                     <?php endforeach;
@@ -97,7 +97,7 @@ if (isset($_SESSION['user'])) {
                                     <?php } ?>
                                 </div>
                                 <div class="postContent">
-                                    <p class="textPost"><?= $follow->getUser()->getBio(); ?></a>
+                                    <p class="textPost"><?= $follow->getUser()->getBio(); ?></p>
                                 </div>
                             </div>
                     <?php endforeach;

@@ -67,12 +67,12 @@ if (isset($_SESSION['user'])) {
                         } ?>
                     </div>
                     <div class="postContent">
-                        <p class="textPost"><?= $post->getTexte(); ?></a>
-                            <?php if ($post->getMedia()) { ?>
-                                <span class="without-caption image-link">
-                                    <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
-                                </span>
-                            <?php } ?>
+                        <p class="textPost"><?= $post->getTexte(); ?></p>
+                        <?php if ($post->getMedia()) { ?>
+                            <span class="without-caption image-link">
+                                <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                            </span>
+                        <?php } ?>
 
                     </div>
                     <div class="likecomment">
@@ -146,7 +146,7 @@ if (isset($_SESSION['user'])) {
                         } ?>
                     </div>
                     <div class="postContent">
-                        <p class="textPost"><?= $comment->getContent(); ?></a>
+                        <p class="textPost"><?= $comment->getContent(); ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

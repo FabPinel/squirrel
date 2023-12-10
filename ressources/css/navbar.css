@@ -39,7 +39,6 @@ body {
   }
   
   .sidebar ul a {
-    display: block;
     width: 100%;
     line-height: 80px; 
     font-size: 20px;
@@ -49,6 +48,8 @@ body {
     box-sizing: border-box;
     transition: .4s;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
   
   ul li:hover a {
@@ -167,6 +168,10 @@ body {
   background-color: rgb(239, 234, 234);
   transition: 0.5s;
   cursor: pointer;
+}
+
+.iconNav {
+  margin-right: 1vw;
 }
 
 
