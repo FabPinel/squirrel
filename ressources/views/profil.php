@@ -222,7 +222,7 @@ if (isset($_SESSION['user'])) {
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) { ?>
                                             <?php if ($post->getMedia()) : ?>
-                                                <img src="<?= $post->getMedia(); ?>" alt="Lien vers image" class="imgPost">
+                                                <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
                                             <?php endif; ?>
                                         <?php } ?>
                                     </a>
@@ -298,7 +298,7 @@ if (isset($_SESSION['user'])) {
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) { ?>
                                             <?php if ($post->getMedia()) : ?>
-                                                <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                                <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
                                             <?php endif; ?>
                                         <?php } ?>
                                     </a>
@@ -374,7 +374,7 @@ if (isset($_SESSION['user'])) {
                                         <p class="textPost"><?= $post->getTexte(); ?></p>
                                         <?php if ($post->getMedia()) { ?>
                                             <?php if ($post->getMedia()) : ?>
-                                                <img src="<?= $post->getMedia(); ?>" alt="" class="imgPost">
+                                                <img src="/ressources/img/<?= $post->getMedia(); ?>" alt="" class="imgPost">
                                             <?php endif; ?>
                                         <?php } ?>
                                     </a>

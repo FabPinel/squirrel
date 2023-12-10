@@ -558,10 +558,10 @@ class Post
         $queryComment->execute(array('idPost' => $idPost));
     }
 
-    public static function createPost($texte, $media, $user)
+    public static function createPost($texte, $user, $media)
     {
         global $bdd;
-        $queryComment = $bdd->prepare("INSERT INTO posts (texte, media, user) VALUES (:texte, :media, :user)");
-        $queryComment->execute(array('texte' => $texte, 'media' => $media, 'user' => $user));
+        $queryComment = $bdd->prepare("INSERT INTO posts (texte, user, media) VALUES (:texte, :user, :media)");
+        $queryComment->execute(array('texte' => $texte, 'user' => $user, 'media' => $media));
     }
 }
